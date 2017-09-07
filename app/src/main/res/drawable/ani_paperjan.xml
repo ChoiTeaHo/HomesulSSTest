@@ -1,0 +1,59 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/paperjan1" android:duration="50"/>
+
+    <item android:drawable="@drawable/paperjan2" android:duration="50"/>
+
+    <item android:drawable="@drawable/paperjan3" android:duration="50"/>
+
+    <item android:drawable="@drawable/paperjan4" android:duration="50"/>
+
+    <item android:drawable="@drawable/paperjan5" android:duration="50"/>
+
+    <item android:drawable="@drawable/paperjan6" android:duration="50"/>
+
+    <item android:drawable="@drawable/paperjan7" android:duration="50"/>
+
+    <item android:drawable="@drawable/paperjan8" android:duration="50"/>
+
+    <item android:drawable="@drawable/paperjan9" android:duration="50"/>
+
+    <item android:drawable="@drawable/paperjan10" android:duration="50"/>
+
+    <item android:drawable="@drawable/paperjan11" android:duration="50"/>
+
+    <item android:drawable="@drawable/paperjan12" android:duration="50"/>
+
+    <item android:drawable="@drawable/paperjan13" android:duration="50"/>
+
+    <item android:drawable="@drawable/paperjan14" android:duration="50"/>
+
+    <item android:drawable="@drawable/paperjan15" android:duration="50"/>
+
+    <item android:drawable="@drawable/paperjan16" android:duration="50"/>
+
+    <item android:drawable="@drawable/paperjan17" android:duration="50"/>
+
+    <item android:drawable="@drawable/paperjan18" android:duration="50"/>
+
+    <item android:drawable="@drawable/paperjan19" android:duration="50"/>
+
+    <item android:drawable="@drawable/paperjan20" android:duration="50"/>
+
+    <item android:drawable="@drawable/paperjan21" android:duration="50"/>
+
+    <item android:drawable="@drawable/paperjan22" android:duration="50"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</animation-list>

@@ -1,0 +1,70 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/beer1" android:duration="10"/>
+    <item android:drawable="@drawable/beer2" android:duration="10"/>
+    <item android:drawable="@drawable/beer3" android:duration="10"/>
+    <item android:drawable="@drawable/beer4" android:duration="10"/>
+    <item android:drawable="@drawable/beer5" android:duration="10"/>
+    <item android:drawable="@drawable/beer6" android:duration="10"/>
+    <item android:drawable="@drawable/beer7" android:duration="10"/>
+    <item android:drawable="@drawable/beer8" android:duration="10"/>
+    <item android:drawable="@drawable/beer9" android:duration="10"/>
+    <item android:drawable="@drawable/beer10" android:duration="10"/>
+    <item android:drawable="@drawable/beer11" android:duration="10"/>
+    <item android:drawable="@drawable/beer12" android:duration="10"/>
+    <item android:drawable="@drawable/beer13" android:duration="10"/>
+    <item android:drawable="@drawable/beer14" android:duration="10"/>
+    <item android:drawable="@drawable/beer15" android:duration="10"/>
+    <item android:drawable="@drawable/beer16" android:duration="10"/>
+    <item android:drawable="@drawable/beer17" android:duration="10"/>
+    <item android:drawable="@drawable/beer18" android:duration="10"/>
+    <item android:drawable="@drawable/beer19" android:duration="10"/>
+    <item android:drawable="@drawable/beer20" android:duration="10"/>
+    <item android:drawable="@drawable/beer21" android:duration="10"/>
+    <item android:drawable="@drawable/beer22" android:duration="10"/>
+    <item android:drawable="@drawable/beer23" android:duration="10"/>
+    <item android:drawable="@drawable/beer24" android:duration="10"/>
+    <item android:drawable="@drawable/beer25" android:duration="10"/>
+    <item android:drawable="@drawable/beer26" android:duration="10"/>
+    <item android:drawable="@drawable/beer27" android:duration="10"/>
+    <item android:drawable="@drawable/beer28" android:duration="10"/>
+    <item android:drawable="@drawable/beer29" android:duration="10"/>
+    <item android:drawable="@drawable/beer30" android:duration="10"/>
+    <item android:drawable="@drawable/beer31" android:duration="10"/>
+    <item android:drawable="@drawable/beer32" android:duration="10"/>
+    <item android:drawable="@drawable/beer33" android:duration="10"/>
+    <item android:drawable="@drawable/beer34" android:duration="10"/>
+    <item android:drawable="@drawable/beer35" android:duration="10"/>
+    <item android:drawable="@drawable/beer36" android:duration="10"/>
+    <item android:drawable="@drawable/beer37" android:duration="10"/>
+    <item android:drawable="@drawable/beer38" android:duration="10"/>
+    <item android:drawable="@drawable/beer39" android:duration="10"/>
+    <item android:drawable="@drawable/beer40" android:duration="10"/>
+    <item android:drawable="@drawable/beer41" android:duration="10"/>
+    <item android:drawable="@drawable/beer42" android:duration="10"/>
+    <item android:drawable="@drawable/beer43" android:duration="10"/>
+    <item android:drawable="@drawable/beer44" android:duration="10"/>
+    <item android:drawable="@drawable/beer45" android:duration="10"/>
+    <item android:drawable="@drawable/beer46" android:duration="10"/>
+    <item android:drawable="@drawable/beer47" android:duration="10"/>
+    <item android:drawable="@drawable/beer48" android:duration="10"/>
+    <item android:drawable="@drawable/beer49" android:duration="10"/>
+    <item android:drawable="@drawable/beer50" android:duration="10"/>
+    <item android:drawable="@drawable/beer51" android:duration="10"/>
+    <item android:drawable="@drawable/beer52" android:duration="10"/>
+    <item android:drawable="@drawable/beer53" android:duration="10"/>
+    <item android:drawable="@drawable/beer54" android:duration="10"/>
+    <item android:drawable="@drawable/beer55" android:duration="10"/>
+    <item android:drawable="@drawable/beer56" android:duration="10"/>
+    <item android:drawable="@drawable/beer57" android:duration="10"/>
+    <item android:drawable="@drawable/beer58" android:duration="10"/>
+    <item android:drawable="@drawable/beer59" android:duration="10"/>
+    <item android:drawable="@drawable/beer60" android:duration="10"/>
+    <item android:drawable="@drawable/beer61" android:duration="10"/>
+    <item android:drawable="@drawable/beer62" android:duration="10"/>
+
+
+
+
+
+
+</animation-list>

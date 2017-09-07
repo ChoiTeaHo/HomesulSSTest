@@ -1,0 +1,43 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!--편법 사실 @rawable/beer1이 아닌 "@style/AppTheme.OverFlow" 이용해 적용해야함. 뭐, 이렇게하니 옵션은 안보임.-->
+        <item name="android:actionOverflowButtonStyle">@drawable/beer1</item>
+
+    </style>
+
+
+    <!-- 위에서 편법을 사용하여 불러오지 않으니 필요없음-->
+    <style name="AppTheme.OverFlow" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:src">@mipmap/ic_launcher</item>
+    </style>
+
+
+
+
+
+    <style name="SplashThemeparent" parent="@android:style/Theme.NoTitleBar">
+        <item name="android:windowBackground">@drawable/splashimg</item>
+    </style>
+
+
+    <style name="AppThemeDioalog" parent="Base.Theme.AppCompat.Dialog">
+        <item name="android:windowIsTranslucent">true</item>
+
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+
+    </style>
+
+
+
+
+
+
+</resources>

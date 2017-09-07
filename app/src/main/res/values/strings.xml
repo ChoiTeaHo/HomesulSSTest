@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HomesulS</string>
+
+
+    <string name="exit">혼술집</string>
+    <string name="exit_message">종료하시겠습니까?</string>
+    <string name="yes">더는못먹어</string>
+    <string name="no">아직멀었어달려</string>
+</resources>

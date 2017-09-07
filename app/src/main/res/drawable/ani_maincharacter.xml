@@ -1,0 +1,10 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/maincharacter1" android:duration="100"/>
+    <item android:drawable="@drawable/maincharacter2" android:duration="100"/>
+    <item android:drawable="@drawable/maincharacter3" android:duration="100"/>
+    <item android:drawable="@drawable/maincharacter4" android:duration="100"/>
+    <item android:drawable="@drawable/maincharacter5" android:duration="100"/>
+    <item android:drawable="@drawable/maincharacter6" android:duration="100"/>
+    <item android:drawable="@drawable/maincharacter7" android:duration="100"/>
+    <item android:drawable="@drawable/maincharacter8" android:duration="100"/>
+</animation-list>
