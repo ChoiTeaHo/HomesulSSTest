@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <scale xmlns:android="http://schemas.android.com/apk/res/android"
-android:duration="1300"
-android:fromXScale="250dp"
-android:fromYScale="250dp"
-android:toXScale="500dp"
+android:duration="800"
+android:fromXScale="150dp"
+android:fromYScale="150dp"
+android:toXScale="430dp"
 android:toYScale="400dp"
 android:pivotX="50%"
-android:pivotY="100%">
+android:pivotY="100%"> <!--위치-->
 
 </scale>

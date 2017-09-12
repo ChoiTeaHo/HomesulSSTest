@@ -14,10 +14,10 @@
         android:background="?attr/colorPrimaryDark">
 
         <TextView
+            android:id="@+id/toolbar_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/toolbar_textview"
-            android:text="textview"
+            android:text="건강백서"
             android:textColor="@android:color/white" />
     </android.support.v7.widget.Toolbar>
 
