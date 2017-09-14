@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -33,6 +34,9 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
 
+
+
+
     AudioManager soundMode;  //사운드 모드 (무음/소리 등)
     private static MediaPlayer mp; //배경음 재생을 위한 MediaPlayer을 가지는 mp.
 
@@ -43,16 +47,22 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
 //Soundpool파트
-    SoundPool m_soundPool; // 맥주따르는 소리를 위한 Soundpool
+
+    SoundPool m_soundPool; // Sound Pool 을 담는 그릇
+
+    int sojuFlow_Sound; //소주 따르는 소리
     int beerFlow_Sound; // 맥주따르는소리
 
-    SoundPool m_cheerssound1; // 건배소리를 위한 Soundpool
     int cheers_Sound1; //유리 건배소리
 
 
 
 
 //애니메이션 파트
+
+    ImageView soju_Img; //소주Img
+    AnimationDrawable sojuAni;
+
     ImageView paperjan_Img; //종이컵img
     AnimationDrawable paperjanAni; //AnimationDrawble를 가진 paperjanAni 변수선언 ( paperjan_Img 를 위해 사용할 것임. )
 
@@ -65,7 +75,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     AnimationDrawable ani; //AnimationDrawble를 가진 ani 변수선언 ( flowBeer_Img 를 위해 사용할 것임.)
 */
 
-    ImageView star1_Img, star2_Img;
 
 
     //=============================================백버튼종료 로직=======================================================================================
@@ -122,6 +131,19 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 //=============================================모드 사운드==========================================================================================
         soundMode = (AudioManager)getBaseContext().getSystemService(Context.AUDIO_SERVICE);  // 사운드 ON OFF를 위한 현재 오디오 모드확인.
 
@@ -136,19 +158,20 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 //=============================================사운드==========================================================================================
         m_soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0); // 최대 음악파일의 개수, 스트림타입, 음질 기본값0
-        beerFlow_Sound = m_soundPool.load(this, R.raw.beerflowbgm, 1);       // 각 재생음악을 미리준비함. this는 현재화면 제어권자
-        //R.raw.cheers는 음악파일
-        //1은 우선순위//1은 우선순위
 
-        m_cheerssound1 = new SoundPool(1, AudioManager.STREAM_MUSIC, 0); // 최대 음악파일의 개수, 스트림타입, 음질 기본값0
-        cheers_Sound1 = m_soundPool.load(this, R.raw.cheerssound, 1);       // 각 재생음악을 미리준비함. this는 현재화면 제어권자
-        //R.raw.cheers는 음악파일
-        //1은 우선순위//1은 우선순위
+        beerFlow_Sound = m_soundPool.load(this, R.raw.beerflowbgm, 1);   //맥주따르는소리    // 각 재생음악을 미리준비함. this는 현재화면 제어권자 , 1은 우선순위//1은 우선순위
+        sojuFlow_Sound = m_soundPool.load(this, R.raw.sojuflowbgm, 1);   //소주따르는소리
+
+        cheers_Sound1 = m_soundPool.load(this, R.raw.cheerssound, 1);    //소주잔 건배소리
 
 //=============================================================================================================================================
 
 
 
+        soju_Img = (ImageView) findViewById(R.id.soju_Img);
+        soju_Img.setBackgroundResource(R.drawable.ani_soju);
+        sojuAni = (AnimationDrawable) soju_Img.getBackground();
+        sojuAni.setOneShot(true);
 
         paperjan_Img = (ImageView) findViewById(R.id.paperjan_Img);
         paperjan_Img.setBackgroundResource(R.drawable.ani_paperjan);
@@ -199,8 +222,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }  //절대영역
 
 
-
-
 //=====================================================라이프사이클 생명주기============================================================================
 
     @Override
@@ -220,8 +241,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
 
+
     @Override
     protected void onPause() {
+        mp.pause(); //배경음악 일시정지
         m_sensorManager.unregisterListener(this); // 센서리스너 종료
         super.onPause();
     }
@@ -252,6 +275,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
         super.onDestroy();
+
         clearApplicationCache(null); //위의 종료시 모든 캐쉬 삭제 코드
         android.os.Process.killProcess(android.os.Process.myPid() );
     }
@@ -295,7 +319,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         if (item.getItemId() == R.id.menuOption_Item){  //menu 폴더에 정의하고 만들어놓은 menu_toolbar.xml 안에서 정의한 item 이 menuOption_Item 일때
 
             Intent intent = new Intent(MainActivity.this, DialogActivity.class);  // DialogActivity 시작. (  DialogActivity 는 액티비티를 다이얼로그형태로 구현한 액티비티임.)
+            //startActivity(intent);
             startActivity(intent);
+
         }
 
 
@@ -305,15 +331,18 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 //==================================================센서==================================================================================
     public void onSensorChanged(SensorEvent sensorEvent) {
         if (sensorEvent.values[0] == 0){   //근접했을때
-
+            Drawable imgttt = paperjan_Img.getBackground();
+            imgttt.setAlpha(255);
 
             Animation scaleanimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.scale);  //스케일 트윈애니메이션. 점점커지는 맥주 애니메이션효과를 가진 scale.xml 받는 scaleanimation 객체 생성.
             paperjan_Img.startAnimation(scaleanimation); //bigBeer_Img에 적용하고 애니메이션 실행 ( 점점 커지게 된다. )*//**//*
+
+
             paperjanAni.setVisible(false, false);
             //paperjan_Img.setVisibility(View.VISIBLE);
             paperjanAni.start();
 
-
+            soju_Img.setVisibility(View.INVISIBLE);
 
 
 
@@ -356,18 +385,31 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         else{  //근접하지 않았을때
 
             paperjan_Img.setVisibility(View.INVISIBLE);
-
             paperjanAni.stop();
-            Animation t = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.translate);  //스케일 트윈애니메이션. 점점커지는 맥주 애니메이션효과를 가진 scale.xml 받는 scaleanimation 객체 생성.
-            paperjan_Img.startAnimation(t);
 
 
-            m_soundPool.play(cheers_Sound1,  //준비한 soundID 맥주따르는 효과음
-                    0, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
-                    0, //오른쪽 볼륨 float
+      /*      Animation ts = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.translate);  //트랜스레이트 애니메이션. 소주잔이 사이드로 나오는 애니메이션효과
+            paperjan_Img.startAnimation(ts);*/
+            Drawable imgttt = paperjan_Img.getBackground();
+            imgttt.setAlpha(0);
+
+            paperjan_Img.setVisibility(View.INVISIBLE);
+
+            Animation t = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bouncescale);  //바운스 트윈애니메이션. 소주잔이 튀기는 애니메이션효과
+            soju_Img.startAnimation(t);
+
+
+            soju_Img.setVisibility(View.VISIBLE);
+            sojuAni.start();
+
+            m_soundPool.play(sojuFlow_Sound,  //준비한 soundID 맥주따르는 효과음
+                    1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
+                    1, //오른쪽 볼륨 float
                     1, //우선순위 int
                     0, //반복회수 int -1:무한반복, 0:반복안함
                     1); //재생속도 float 0.5(절반속도)~2.0(2배속)
+
+
 
 
 /*
@@ -387,10 +429,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
 
+
+
+
    /* boolean registerListener(SensorEventListener listener){  //센서리스너 등록 함수()
         m_sensorManager.registerListener(this, m_sensor, SensorManager.SENSOR_DELAY_NORMAL);
         return false;
     }*/
+
+
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {  // (Sensor sensor, int i)에서 int i는 현 기기 정확도를 의미 정확도는 3개로 나뉜다.

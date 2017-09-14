@@ -42,6 +42,13 @@ public class DialogActivity extends AppCompatActivity {
 
 
 
+        themebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DialogActivity.this,MainActivity.class );
+                startActivity(intent);
+            }
+        });
 
 //================================건강백서 인텐트=================================================
 
