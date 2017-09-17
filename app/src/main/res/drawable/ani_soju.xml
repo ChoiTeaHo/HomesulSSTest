@@ -1,11 +1,12 @@
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/soju1" android:duration="100"/>
-    <item android:drawable="@drawable/soju2" android:duration="100"/>
-    <item android:drawable="@drawable/soju3" android:duration="100"/>
-    <item android:drawable="@drawable/soju4" android:duration="100"/>
-    <item android:drawable="@drawable/soju5" android:duration="100"/>
-    <item android:drawable="@drawable/soju6" android:duration="100"/>
-    <item android:drawable="@drawable/soju7" android:duration="100"/>
+    <item android:drawable="@drawable/soju1" android:duration="200"/>
+    <item android:drawable="@drawable/soju2" android:duration="200"/>
+    <item android:drawable="@drawable/soju3" android:duration="200"/>
+    <item android:drawable="@drawable/soju4" android:duration="200"/>
+    <item android:drawable="@drawable/soju5" android:duration="200"/>
+    <item android:drawable="@drawable/soju6" android:duration="200"/>
+    <item android:drawable="@drawable/soju7" android:duration="200"/>
+    <item android:drawable="@drawable/soju8" android:duration="200"/>
 
 
 

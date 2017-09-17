@@ -9,35 +9,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-
-        <activity android:name=".SplashActivity"
-            android:theme="@style/SplashThemeparent"
-            android:screenOrientation="portrait">
-
+        <activity
+            android:name=".SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashThemeparent">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-
-
-        <activity android:name=".MainActivity" android:screenOrientation="portrait">
-        </activity>
-
-        <activity android:name=".DialogActivity" android:theme="@style/AppThemeDioalog"/>
-
-        <activity android:name=".SubActivity"/>
-        <activity android:name=".ItemView"/>
-
-
-
-
-
-
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DialogActivity"
+            android:theme="@style/AppThemeDioalog" />
+        <activity android:name=".SubActivity" />
+        <activity android:name=".ItemView" />
+        <activity android:name=".ThemeActivity" />
+        <activity android:name=".ChoiceActivity" />
+        <activity android:name=".CupActivity"></activity>
     </application>
 
 </manifest>

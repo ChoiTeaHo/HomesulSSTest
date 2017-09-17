@@ -15,12 +15,11 @@ import android.widget.ImageButton;
  */
 
 public class DialogActivity extends AppCompatActivity {
-
-
-
+    Intent intent;
+    int child;
 
     @Override
-    protected void onCreate( Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dialog);
 
@@ -41,12 +40,17 @@ public class DialogActivity extends AppCompatActivity {
         final ImageButton soundButton = (ImageButton) findViewById(R.id.soundButton);
 
 
+//================================테마 인텐트=================================================
+
 
         themebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DialogActivity.this,MainActivity.class );
+                Intent intent = new Intent(DialogActivity.this, ChoiceActivity.class);
+                //        startActivityForResult(intent, 1);
+                intent.addFlags(intent.FLAG_ACTIVITY_FORWARD_RESULT);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -83,9 +87,6 @@ public class DialogActivity extends AppCompatActivity {
 
             }
         });
-
-
-
 
 
     }

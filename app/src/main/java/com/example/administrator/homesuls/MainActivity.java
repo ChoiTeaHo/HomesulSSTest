@@ -1,5 +1,6 @@
 package com.example.administrator.homesuls;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -26,7 +28,9 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.webkit.CookieManager;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -34,36 +38,32 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
 
+//잔바꾸기 파트
+    Button change_Btn,change_Btn2,change_Btn3,change_Btn4;
 
-
-
+//배경음 파트
     AudioManager soundMode;  //사운드 모드 (무음/소리 등)
     private static MediaPlayer mp; //배경음 재생을 위한 MediaPlayer을 가지는 mp.
 
-
-
+//센서 파트
     private SensorManager m_sensorManager; //근접센서를 위한 m_sensorManager.
     private Sensor m_sensor; //근접센서를 위해 m_sonsorManager를 연결받기 위한 m_snsor
 
 
 //Soundpool파트
-
     SoundPool m_soundPool; // Sound Pool 을 담는 그릇
-
     int sojuFlow_Sound; //소주 따르는 소리
     int beerFlow_Sound; // 맥주따르는소리
-
     int cheers_Sound1; //유리 건배소리
-
 
 
 
 //애니메이션 파트
 
-    ImageView soju_Img; //소주Img
-    AnimationDrawable sojuAni;
+    ImageView sojuflow_Img; //미니소주컵 Img
+    AnimationDrawable sojuflow_Ani; //미니소주컵 Flow Ani
 
-    ImageView paperjan_Img; //종이컵img
+    ImageView paperjan_Img; //건배소주컵img
     AnimationDrawable paperjanAni; //AnimationDrawble를 가진 paperjanAni 변수선언 ( paperjan_Img 를 위해 사용할 것임. )
 
 /*
@@ -168,15 +168,66 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
 
-        soju_Img = (ImageView) findViewById(R.id.soju_Img);
-        soju_Img.setBackgroundResource(R.drawable.ani_soju);
-        sojuAni = (AnimationDrawable) soju_Img.getBackground();
-        sojuAni.setOneShot(true);
+        sojuflow_Img = (ImageView) findViewById(R.id.sojuflow_Img);
+        sojuflow_Img.setBackgroundResource(R.drawable.ani_soju);
+        sojuflow_Ani = (AnimationDrawable) sojuflow_Img.getBackground();
+        sojuflow_Ani.setOneShot(true);
 
         paperjan_Img = (ImageView) findViewById(R.id.paperjan_Img);
         paperjan_Img.setBackgroundResource(R.drawable.ani_paperjan);
         paperjanAni = (AnimationDrawable) paperjan_Img.getBackground();
 
+
+
+//================================버튼클릭 잔바꾸기======================================================
+//맥주플로우
+        change_Btn = (Button) findViewById(R.id.change_B);
+        change_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sojuflow_Img.setBackgroundResource(R.drawable.ani_beer);
+                sojuflow_Ani = (AnimationDrawable) sojuflow_Img.getBackground();
+                sojuflow_Ani.setOneShot(true);
+            }
+        });
+
+//종이컵소주플로우
+        change_Btn3 = (Button) findViewById(R.id.change_Btn3);
+        change_Btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sojuflow_Img.setBackgroundResource(R.drawable.ani_soju);
+                sojuflow_Ani = (AnimationDrawable) sojuflow_Img.getBackground();
+                sojuflow_Ani.setOneShot(true);
+            }
+        });
+
+
+//종이컵소주이펙트
+        change_Btn4 = (Button) findViewById(R.id.change_Btn4);
+        change_Btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                paperjan_Img.setBackgroundResource(R.drawable.ani_paperjan);
+                paperjanAni = (AnimationDrawable) paperjan_Img.getBackground();
+                paperjanAni.setOneShot(true);
+            }
+        });
+
+
+
+//스트레이트잔 이펙트
+        change_Btn2 = (Button) findViewById(R.id.change_B2);
+        change_Btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                paperjan_Img.setBackgroundResource(R.drawable.ani_straightjan);
+                paperjanAni = (AnimationDrawable) paperjan_Img.getBackground();
+                paperjanAni.setOneShot(true);
+            }
+        });
+
+//==================================================================================================
 
 /*        character_Img = (ImageView) findViewById(R.id.character_Img); //character_Img 객체에 ImageView를 xml에서 명시받음
         character_Img.setBackgroundResource(R.drawable.ani_maincharacter); //명시받은 character_Img의 백그라운드 리소스를 ani_maincharacter.xml로 지정
@@ -190,6 +241,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
 
+
+//====================================================================================================================================
         m_sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);  //센서
         m_sensor = m_sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);  //센서
         //m_sensorManager.registerListener(this, m_sensor, m_sensorManager.SENSOR_DELAY_NORMAL);  //센서등록
@@ -319,8 +372,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         if (item.getItemId() == R.id.menuOption_Item){  //menu 폴더에 정의하고 만들어놓은 menu_toolbar.xml 안에서 정의한 item 이 menuOption_Item 일때
 
             Intent intent = new Intent(MainActivity.this, DialogActivity.class);  // DialogActivity 시작. (  DialogActivity 는 액티비티를 다이얼로그형태로 구현한 액티비티임.)
-            //startActivity(intent);
-            startActivity(intent);
+            startActivityForResult(intent, 1);
 
         }
 
@@ -342,7 +394,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             //paperjan_Img.setVisibility(View.VISIBLE);
             paperjanAni.start();
 
-            soju_Img.setVisibility(View.INVISIBLE);
+            sojuflow_Img.setVisibility(View.INVISIBLE);
 
 
 
@@ -396,11 +448,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             paperjan_Img.setVisibility(View.INVISIBLE);
 
             Animation t = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bouncescale);  //바운스 트윈애니메이션. 소주잔이 튀기는 애니메이션효과
-            soju_Img.startAnimation(t);
+            sojuflow_Img.startAnimation(t);
 
 
-            soju_Img.setVisibility(View.VISIBLE);
-            sojuAni.start();
+            sojuflow_Img.setVisibility(View.VISIBLE);
+            sojuflow_Ani.start();
 
             m_soundPool.play(sojuFlow_Sound,  //준비한 soundID 맥주따르는 효과음
                     1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
@@ -427,6 +479,50 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
 
+
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        ConstraintLayout linearLayout = (ConstraintLayout) findViewById(R.id.Rela);
+        if (requestCode == 1){
+            if(resultCode == Activity.RESULT_OK){
+                String result = data.getStringExtra("선택한 이미지");
+//                Toast.makeText(MainActivity.this, result, Toast.LENGTH_LONG).show();
+                switch (result){
+                    case "0":
+                        linearLayout.setBackgroundResource(R.drawable.mainbackground);
+                        break;
+                    case "1":
+                        linearLayout.setBackgroundResource(R.drawable.rentedroombackground);
+                        break;
+                    case "2":
+                        linearLayout.setBackgroundResource(R.drawable.home3);
+                        break;
+
+
+                    //10번 부터는 컵/병/이펙트 선택
+                    case "10": //종이컵
+                        paperjan_Img.setBackgroundResource(R.drawable.ani_paperjan);
+                        paperjanAni = (AnimationDrawable) paperjan_Img.getBackground();
+                        paperjanAni.setOneShot(true);
+
+                        sojuflow_Img.setBackgroundResource(R.drawable.ani_soju);
+                        sojuflow_Ani = (AnimationDrawable) sojuflow_Img.getBackground();
+                        sojuflow_Ani.setOneShot(true);
+                        break;
+
+                    case "11": //종이컵
+                        Toast.makeText(this, "11번선택", Toast.LENGTH_SHORT).show();
+                        break;
+
+                }
+            }else if (resultCode == Activity.RESULT_CANCELED){
+                //반환값이 없을 경우의 코드
+            }
+        }
+    }
 
 
 

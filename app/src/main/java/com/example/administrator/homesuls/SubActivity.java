@@ -51,7 +51,6 @@ public class SubActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-
     }
 
     //클릭 이벤트

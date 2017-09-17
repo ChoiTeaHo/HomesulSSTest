@@ -13,11 +13,19 @@
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-
         android:background="?attr/colorPrimaryDark"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteY="0dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar_textview"
+            android:text="MainActivity"
+            android:textColor="@android:color/white" />
+
+    </android.support.v7.widget.Toolbar>
 
 
     <ImageView
@@ -40,20 +48,86 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <ImageView
-        android:id="@+id/soju_Img"
+        android:id="@+id/sojuflow_Img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/ani_soju"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.405"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.937"
-        android:background="@drawable/ani_soju" />
+        app:layout_constraintVertical_bias="0.937" />
+
+    <Button
+        android:id="@+id/change_B"
+        android:layout_width="54dp"
+        android:layout_height="34dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginRight="0dp"
+        android:text="맥주잔"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/change_B2"
+        android:layout_width="81dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="42dp"
+        android:layout_marginLeft="0dp"
+        android:text="양주건배"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <Button
+        android:id="@+id/change_Btn3"
+        android:layout_width="54dp"
+        android:layout_height="34dp"
+        android:layout_marginRight="0dp"
+        android:text="종이컵"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="3dp"
+        app:layout_constraintBottom_toTopOf="@+id/change_B" />
+
+    <Button
+        android:id="@+id/change_Btn4"
+        android:layout_width="82dp"
+        android:layout_height="36dp"
+        android:layout_marginBottom="0dp"
+        android:text="종이건배"
+        app:layout_constraintBottom_toTopOf="@+id/change_B2"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+<LinearLayout
+    android:layout_width="0dp"
+    android:layout_height="38dp"
+    android:layout_alignParentBottom="true"
+    android:layout_marginLeft="0dp"
+    android:background="@color/colorPrimaryDark"
+    app:layout_constraintLeft_toLeftOf="parent"
+    android:layout_marginRight="0dp"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    android:layout_marginBottom="0dp"
+    app:layout_constraintHorizontal_bias="0.555">
+
+<LinearLayout
+    android:layout_width="185dp"
+    android:layout_height="match_parent">
+
+</LinearLayout>
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </LinearLayout>
+
+</LinearLayout>
 </android.support.constraint.ConstraintLayout>
