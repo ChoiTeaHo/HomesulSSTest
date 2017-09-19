@@ -28,7 +28,6 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.webkit.CookieManager;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -38,12 +37,11 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
 
-//잔바꾸기 파트
-    Button change_Btn,change_Btn2,change_Btn3,change_Btn4;
 
 //배경음 파트
     AudioManager soundMode;  //사운드 모드 (무음/소리 등)
     private static MediaPlayer mp; //배경음 재생을 위한 MediaPlayer을 가지는 mp.
+
 
 //센서 파트
     private SensorManager m_sensorManager; //근접센서를 위한 m_sensorManager.
@@ -55,6 +53,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     int sojuFlow_Sound; //소주 따르는 소리
     int beerFlow_Sound; // 맥주따르는소리
     int cheers_Sound1; //유리 건배소리
+
+    int click_Sound; //클릭사운드
+
+
+//병 파트
+    ImageView sojubootle_Img;
 
 
 
@@ -163,8 +167,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         sojuFlow_Sound = m_soundPool.load(this, R.raw.sojuflowbgm, 1);   //소주따르는소리
 
         cheers_Sound1 = m_soundPool.load(this, R.raw.cheerssound, 1);    //소주잔 건배소리
+        click_Sound = m_soundPool.load(this, R.raw.clicksound, 1);    //소주잔 건배소리
 
 //=============================================================================================================================================
+
+
+        sojubootle_Img = (ImageView) findViewById(R.id.sojubottle_Img);
+
 
 
 
@@ -179,53 +188,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
 
-//================================버튼클릭 잔바꾸기======================================================
-//맥주플로우
-        change_Btn = (Button) findViewById(R.id.change_B);
-        change_Btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sojuflow_Img.setBackgroundResource(R.drawable.ani_beer);
-                sojuflow_Ani = (AnimationDrawable) sojuflow_Img.getBackground();
-                sojuflow_Ani.setOneShot(true);
-            }
-        });
 
-//종이컵소주플로우
-        change_Btn3 = (Button) findViewById(R.id.change_Btn3);
-        change_Btn3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sojuflow_Img.setBackgroundResource(R.drawable.ani_soju);
-                sojuflow_Ani = (AnimationDrawable) sojuflow_Img.getBackground();
-                sojuflow_Ani.setOneShot(true);
-            }
-        });
-
-
-//종이컵소주이펙트
-        change_Btn4 = (Button) findViewById(R.id.change_Btn4);
-        change_Btn4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                paperjan_Img.setBackgroundResource(R.drawable.ani_paperjan);
-                paperjanAni = (AnimationDrawable) paperjan_Img.getBackground();
-                paperjanAni.setOneShot(true);
-            }
-        });
-
-
-
-//스트레이트잔 이펙트
-        change_Btn2 = (Button) findViewById(R.id.change_B2);
-        change_Btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                paperjan_Img.setBackgroundResource(R.drawable.ani_straightjan);
-                paperjanAni = (AnimationDrawable) paperjan_Img.getBackground();
-                paperjanAni.setOneShot(true);
-            }
-        });
 
 //==================================================================================================
 
@@ -370,7 +333,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.menuOption_Item){  //menu 폴더에 정의하고 만들어놓은 menu_toolbar.xml 안에서 정의한 item 이 menuOption_Item 일때
-
+            m_soundPool.play(click_Sound,  //준비한 soundID 맥주따르는 효과음
+                    1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
+                    1, //오른쪽 볼륨 float
+                    1, //우선순위 int
+                    0, //반복회수 int -1:무한반복, 0:반복안함
+                    1); //재생속도 float 0.5(절반속도)~2.0(2배속)
             Intent intent = new Intent(MainActivity.this, DialogActivity.class);  // DialogActivity 시작. (  DialogActivity 는 액티비티를 다이얼로그형태로 구현한 액티비티임.)
             startActivityForResult(intent, 1);
 
@@ -383,11 +351,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 //==================================================센서==================================================================================
     public void onSensorChanged(SensorEvent sensorEvent) {
         if (sensorEvent.values[0] == 0){   //근접했을때
-            Drawable imgttt = paperjan_Img.getBackground();
-            imgttt.setAlpha(255);
+            Drawable imgttt = paperjan_Img.getBackground(); //투명화를 위한 imgttt 객체. 안에 커지는 애니 넣음 중복막기위해 편법
+            imgttt.setAlpha(255); // imgttt 객체에 투명 적용
 
             Animation scaleanimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.scale);  //스케일 트윈애니메이션. 점점커지는 맥주 애니메이션효과를 가진 scale.xml 받는 scaleanimation 객체 생성.
             paperjan_Img.startAnimation(scaleanimation); //bigBeer_Img에 적용하고 애니메이션 실행 ( 점점 커지게 된다. )*//**//*
+
+            sojubootle_Img.setVisibility(View.INVISIBLE); //소주Bottle 안보이게
 
 
             paperjanAni.setVisible(false, false);
@@ -436,7 +406,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
         else{  //근접하지 않았을때
 
-            paperjan_Img.setVisibility(View.INVISIBLE);
+            sojubootle_Img.setVisibility(View.VISIBLE); //소주Bottle 보이게
+            paperjan_Img.setVisibility(View.INVISIBLE); //소주잔 이펙트 보이게
             paperjanAni.stop();
 
 
@@ -511,10 +482,21 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                         sojuflow_Img.setBackgroundResource(R.drawable.ani_soju);
                         sojuflow_Ani = (AnimationDrawable) sojuflow_Img.getBackground();
                         sojuflow_Ani.setOneShot(true);
+
+                        sojubootle_Img.setBackgroundResource(R.drawable.sojubottle);
                         break;
 
-                    case "11": //종이컵
+                    case "11": //맥주컵
                         Toast.makeText(this, "11번선택", Toast.LENGTH_SHORT).show();
+                        paperjan_Img.setBackgroundResource(R.drawable.ani_straightjan);
+                        paperjanAni = (AnimationDrawable) paperjan_Img.getBackground();
+                        paperjanAni.setOneShot(true);
+
+                        sojuflow_Img.setBackgroundResource(R.drawable.ani_beer);
+                        sojuflow_Ani = (AnimationDrawable) sojuflow_Img.getBackground();
+                        sojuflow_Ani.setOneShot(true);
+
+                        sojubootle_Img.setBackgroundResource(R.drawable.soju1);
                         break;
 
                 }

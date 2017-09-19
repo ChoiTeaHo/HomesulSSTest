@@ -1,8 +1,10 @@
 package com.example.administrator.homesuls;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -36,6 +38,8 @@ public class ChoiceActivity extends AppCompatActivity {
 
         ImageButton img1 = (ImageButton) findViewById(R.id.imageButton1);
         ImageButton img2 = (ImageButton) findViewById(R.id.imageButton2);
+        ImageButton img3 = (ImageButton) findViewById(R.id.imageButton3);
+
 
 
 
@@ -61,10 +65,24 @@ public class ChoiceActivity extends AppCompatActivity {
                 Intent intent = new Intent(ChoiceActivity.this, CupActivity.class);
                 intent.addFlags(intent.FLAG_ACTIVITY_FORWARD_RESULT);
                 startActivity(intent);
+                finish();
             }
         });
 
-
+        img3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(ChoiceActivity.this);
+                alert.setTitle("Cheerluv Team");
+                alert.setMessage( "개발중 입니다." );
+                alert.setPositiveButton( "닫기", new DialogInterface.OnClickListener() {
+                    public void onClick( DialogInterface dialog, int which) {
+                        dialog.dismiss(); //닫기
+                    }
+                });
+                alert.show();
+            }
+        });
 
 
 

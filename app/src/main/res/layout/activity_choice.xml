@@ -33,9 +33,15 @@
     <LinearLayout
         android:layout_width="200dp"
         android:layout_height="match_parent"
-        android:background="#17f917"
+        android:background="#516151"
         android:weightSum="5">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="테마 선택하기"
+            android:textSize="30dp"/>
         <ImageButton
             android:id="@+id/imageButton1"
             android:layout_width="wrap_content"
@@ -43,6 +49,11 @@
             android:layout_gravity="center"
             app:srcCompat="@mipmap/ic_launcher_round" />
     </LinearLayout>
+
+
+
+
+
 
 
 
@@ -55,8 +66,15 @@
             <LinearLayout
                  android:layout_width="match_parent"
                  android:layout_height="265dp"
-                 android:background="#ff1212"
+                 android:background="#794d4d"
                  android:layout_weight="0.5">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="컵 선택하기"
+                    android:textSize="30dp"/>
 
                 <ImageButton
                     android:id="@+id/imageButton2"
@@ -67,12 +85,24 @@
               </LinearLayout>
 
 
+
+
+
+
+
+
+
              <LinearLayout
                  android:layout_width="match_parent"
                  android:layout_height="265dp"
-                 android:background="#224eec"
+                 android:background="#70693b"
                  android:layout_weight="0.5">
-
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:textStyle="bold"
+                     android:text="개발중    "
+                     android:textSize="30dp"/>
                  <ImageButton
                      android:id="@+id/imageButton3"
                      android:layout_width="wrap_content"

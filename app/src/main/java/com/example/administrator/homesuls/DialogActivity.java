@@ -9,14 +9,14 @@ import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.SeekBar;
 
 /**
  * Created by Administrator on 2017-07-30.
  */
 
 public class DialogActivity extends AppCompatActivity {
-    Intent intent;
-    int child;
+    AudioManager mAudioManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +32,19 @@ public class DialogActivity extends AppCompatActivity {
         getWindow().getAttributes().height = height;
 
 
-        final AudioManager mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        SeekBar seek = (SeekBar)findViewById(R.id.seekvolume);
+        seek.setMax(mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
+        seek.setProgress(mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
+        seek.setOnSeekBarChangeListener(mOnSeek);
+
 
 
         ImageButton themebutton = (ImageButton) findViewById(R.id.themeButton);
         ImageButton healthListViewbutton = (ImageButton) findViewById(R.id.healthListViewButton);
+/*
         final ImageButton soundButton = (ImageButton) findViewById(R.id.soundButton);
+*/
 
 
 //================================테마 인텐트=================================================
@@ -67,7 +74,13 @@ public class DialogActivity extends AppCompatActivity {
 
 //===============================Sound on off 작업중=================================================
 
-        soundButton.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+
+
+/*        soundButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int volume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC); //현재 볼륨 가져오기
@@ -86,9 +99,32 @@ public class DialogActivity extends AppCompatActivity {
 
 
             }
-        });
+        });*/
 
 
     }
 
+    SeekBar.OnSeekBarChangeListener mOnSeek =
+            new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, progress, 0);
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+
+                }
+            };
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }

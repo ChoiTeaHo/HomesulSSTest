@@ -44,7 +44,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="cupClick1"
-                app:srcCompat="@drawable/soju9" />
+                app:srcCompat="@drawable/soju9"
+                android:background="#00000000" />
+
         </LinearLayout>
 
 
@@ -61,7 +63,8 @@
                 android:layout_height="wrap_content"
                 android:onClick="cupClick2"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/beer45" />
+                app:srcCompat="@drawable/beer45"
+                android:background="#00000000" />
         </LinearLayout>
     </LinearLayout>
 
