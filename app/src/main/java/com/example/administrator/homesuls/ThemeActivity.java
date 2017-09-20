@@ -23,7 +23,7 @@ import android.widget.ViewFlipper;
 
 public class ThemeActivity extends AppCompatActivity {
     SoundPool c_soundPool; // Sound Pool 을 담는 그릇
-    int click_Sound; //클릭사운드
+    int click_Sound; //클릭사운드.
 
     ViewFlipper flipper;
 
