@@ -53,12 +53,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     int sojuFlow_Sound; //소주 따르는 소리
     int beerFlow_Sound; // 맥주따르는소리
     int cheers_Sound1; //유리 건배소리
+    int papercheers_Sound1;
 
     int click_Sound; //클릭사운드
 
 
 //병 파트
     ImageView sojubootle_Img;
+    ImageView beerbottle_Img;
 
 
 
@@ -167,13 +169,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         sojuFlow_Sound = m_soundPool.load(this, R.raw.sojuflowbgm, 1);   //소주따르는소리
 
         cheers_Sound1 = m_soundPool.load(this, R.raw.cheerssound, 1);    //소주잔 건배소리
-        click_Sound = m_soundPool.load(this, R.raw.clicksound, 1);    //소주잔 건배소리
+        papercheers_Sound1 = m_soundPool.load(this, R.raw.papercheerssoundm, 1); //종이컵 건배소리
+
+        click_Sound = m_soundPool.load(this, R.raw.clicksound, 1);    //버튼클릭 소리
 
 //=============================================================================================================================================
 
 
         sojubootle_Img = (ImageView) findViewById(R.id.sojubottle_Img);
-
 
 
 
@@ -357,7 +360,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             Animation scaleanimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.scale);  //스케일 트윈애니메이션. 점점커지는 맥주 애니메이션효과를 가진 scale.xml 받는 scaleanimation 객체 생성.
             paperjan_Img.startAnimation(scaleanimation); //bigBeer_Img에 적용하고 애니메이션 실행 ( 점점 커지게 된다. )*//**//*
 
-            sojubootle_Img.setVisibility(View.INVISIBLE); //소주Bottle 안보이게
 
 
             paperjanAni.setVisible(false, false);
@@ -367,19 +369,26 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             sojuflow_Img.setVisibility(View.INVISIBLE);
 
 
+             //유리잔하고싶으면 cheers_Sound1
+                    new Timer().schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            m_soundPool.play(cheers_Sound1,  //준비한 soundID 맥주따르는 효과음
+                                    1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
+                                    1, //오른쪽 볼륨 float
+                                    0, //우선순위 int
+                                    0, //반복회수 int -1:무한반복, 0:반복안함
+                                    1); //재생속도 float 0.5(절반속도)~2.0(2배속)
 
-            new Timer().schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    m_soundPool.play(cheers_Sound1,  //준비한 soundID 맥주따르는 효과음
-                            1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
-                            1, //오른쪽 볼륨 float
-                            0, //우선순위 int
-                            0, //반복회수 int -1:무한반복, 0:반복안함
-                            1); //재생속도 float 0.5(절반속도)~2.0(2배속)
 
-                }
-            },800);
+                        }
+                    },800);
+
+
+
+
+
+
 
 
 
@@ -406,7 +415,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
         else{  //근접하지 않았을때
 
-            sojubootle_Img.setVisibility(View.VISIBLE); //소주Bottle 보이게
             paperjan_Img.setVisibility(View.INVISIBLE); //소주잔 이펙트 보이게
             paperjanAni.stop();
 
@@ -424,6 +432,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
             sojuflow_Img.setVisibility(View.VISIBLE);
             sojuflow_Ani.start();
+
 
             m_soundPool.play(sojuFlow_Sound,  //준비한 soundID 맥주따르는 효과음
                     1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
@@ -469,12 +478,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                         linearLayout.setBackgroundResource(R.drawable.rentedroombackground);
                         break;
                     case "2":
-                        linearLayout.setBackgroundResource(R.drawable.home3);
+                        linearLayout.setBackgroundResource(R.drawable.hangangbackground);
                         break;
 
 
                     //10번 부터는 컵/병/이펙트 선택
                     case "10": //종이컵
+                        Toast.makeText(this, "10번선택", Toast.LENGTH_SHORT).show();
                         paperjan_Img.setBackgroundResource(R.drawable.ani_paperjan);
                         paperjanAni = (AnimationDrawable) paperjan_Img.getBackground();
                         paperjanAni.setOneShot(true);
@@ -484,6 +494,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                         sojuflow_Ani.setOneShot(true);
 
                         sojubootle_Img.setBackgroundResource(R.drawable.sojubottle);
+                        ConstraintLayout.LayoutParams layoutParams10 = (ConstraintLayout.LayoutParams)sojubootle_Img.getLayoutParams(); //RelativeLayout 커지는 맥주의 img 의 크기를 객체화
+                        layoutParams10.width = 90; //가로 1000dp로 만들고 설정.
+                        sojubootle_Img.setLayoutParams(layoutParams10);
+                        layoutParams10.height = 300; //세로 1800dp로 만들고 설정.
+                        sojubootle_Img.setLayoutParams(layoutParams10);
                         break;
 
                     case "11": //맥주컵
@@ -496,7 +511,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                         sojuflow_Ani = (AnimationDrawable) sojuflow_Img.getBackground();
                         sojuflow_Ani.setOneShot(true);
 
-                        sojubootle_Img.setBackgroundResource(R.drawable.soju1);
+                        sojubootle_Img.setBackgroundResource(R.drawable.beerbottle);
+                        ConstraintLayout.LayoutParams layoutParams11 = (ConstraintLayout.LayoutParams)sojubootle_Img.getLayoutParams(); //RelativeLayout 커지는 맥주의 img 의 크기를 객체화
+                        layoutParams11.width = 200; //가로 1000dp로 만들고 설정.
+                        sojubootle_Img.setLayoutParams(layoutParams11);
+                        layoutParams11.height = 300; //세로 1800dp로 만들고 설정.
+                        sojubootle_Img.setLayoutParams(layoutParams11);
+
                         break;
 
                 }

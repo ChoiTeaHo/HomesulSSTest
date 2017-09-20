@@ -2,6 +2,8 @@ package com.example.administrator.homesuls;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBar;
@@ -20,6 +22,8 @@ import android.widget.ViewFlipper;
  */
 
 public class ThemeActivity extends AppCompatActivity {
+    SoundPool c_soundPool; // Sound Pool 을 담는 그릇
+    int click_Sound; //클릭사운드
 
     ViewFlipper flipper;
 
@@ -28,6 +32,8 @@ public class ThemeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_theme);
 
+        c_soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0); // 최대 음악파일의 개수, 스트림타입, 음질 기본값0
+        click_Sound = c_soundPool.load(this, R.raw.clicksound, 1);    //버튼클릭 소리
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -81,6 +87,8 @@ public class ThemeActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        sound();
+
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
@@ -111,13 +119,13 @@ public class ThemeActivity extends AppCompatActivity {
                 flipper.showPrevious();         //이전 View로 교체
                 previousBtn.setImageResource(R.drawable.chevron_left_white);
                 switch (child){
-                    case 0:
+                    case 0: sound();
                         themeText.setText("세번째 테마");
                         break;
-                    case 1:
+                    case 1: sound();
                         themeText.setText("첫번째 테마");
                         break;
-                    case 2:
+                    case 2: sound();
                         themeText.setText("두번째 테마");
                         break;
                 }
@@ -135,13 +143,13 @@ public class ThemeActivity extends AppCompatActivity {
                 flipper.showNext();             //다음 View로 교체
                 nextBtn.setImageResource(R.drawable.chevron_right_white);
                 switch (child){
-                    case 0:
+                    case 0: sound();
                         themeText.setText("두번째 테마");
                         break;
-                    case 1:
+                    case 1: sound();
                         themeText.setText("세번째 테마");
                         break;
-                    case 2:
+                    case 2: sound();
                         themeText.setText("첫번째 테마");
                         break;
                 }
@@ -158,6 +166,8 @@ public class ThemeActivity extends AppCompatActivity {
             case R.id.btn_Close:
 //                int child = flipper.getDisplayedChild();
 
+                sound();
+
                 Intent returnIntent = new Intent();
                 returnIntent.putExtra("선택한 이미지", String.valueOf(child));
                 setResult(Activity.RESULT_OK, returnIntent);
@@ -166,6 +176,16 @@ public class ThemeActivity extends AppCompatActivity {
 
 
         }
+    }
+
+
+    public void sound() {
+        c_soundPool.play(click_Sound,  //준비한 soundID 맥주따르는 효과음
+                1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
+                1, //오른쪽 볼륨 float
+                1, //우선순위 int
+                0, //반복회수 int -1:무한반복, 0:반복안함
+                1); //재생속도 float 0.5(절반속도)~2.0(2배속)
     }
 
     /*public void onClick(View v) {             // 뒤로가는 버튼
