@@ -1,12 +1,32 @@
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/soju1" android:duration="200"/>
-    <item android:drawable="@drawable/soju2" android:duration="200"/>
-    <item android:drawable="@drawable/soju3" android:duration="200"/>
-    <item android:drawable="@drawable/soju4" android:duration="200"/>
-    <item android:drawable="@drawable/soju5" android:duration="200"/>
-    <item android:drawable="@drawable/soju6" android:duration="200"/>
-    <item android:drawable="@drawable/soju7" android:duration="200"/>
-    <item android:drawable="@drawable/soju8" android:duration="200"/>
+    <item android:drawable="@drawable/soju1" android:duration="50"/>
+    <item android:drawable="@drawable/soju2" android:duration="50"/>
+    <item android:drawable="@drawable/soju3" android:duration="50"/>
+    <item android:drawable="@drawable/soju4" android:duration="50"/>
+    <item android:drawable="@drawable/soju5" android:duration="50"/>
+    <item android:drawable="@drawable/soju6" android:duration="50"/>
+    <item android:drawable="@drawable/soju7" android:duration="50"/>
+    <item android:drawable="@drawable/soju8" android:duration="50"/>
+    <item android:drawable="@drawable/soju9" android:duration="50"/>
+    <item android:drawable="@drawable/soju10" android:duration="50"/>
+    <item android:drawable="@drawable/soju11" android:duration="50"/>
+    <item android:drawable="@drawable/soju12" android:duration="50"/>
+    <item android:drawable="@drawable/soju13" android:duration="50"/>
+    <item android:drawable="@drawable/soju14" android:duration="50"/>
+    <item android:drawable="@drawable/soju15" android:duration="50"/>
+    <item android:drawable="@drawable/soju16" android:duration="50"/>
+    <item android:drawable="@drawable/soju17" android:duration="50"/>
+    <item android:drawable="@drawable/soju18" android:duration="50"/>
+    <item android:drawable="@drawable/soju19" android:duration="50"/>
+    <item android:drawable="@drawable/soju20" android:duration="50"/>
+    <item android:drawable="@drawable/soju21" android:duration="50"/>
+    <item android:drawable="@drawable/soju22" android:duration="50"/>
+    <item android:drawable="@drawable/soju23" android:duration="50"/>
+    <item android:drawable="@drawable/soju24" android:duration="50"/>
+    <item android:drawable="@drawable/soju25" android:duration="50"/>
+    <item android:drawable="@drawable/soju26" android:duration="50"/>
+    <item android:drawable="@drawable/soju27" android:duration="50"/>
+
 
 
 

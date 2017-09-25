@@ -1,17 +1,15 @@
 package com.example.administrator.homesuls;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class ChoiceActivity extends AppCompatActivity {
@@ -42,11 +40,14 @@ public class ChoiceActivity extends AppCompatActivity {
 //==========================================================================================================
 
 
+        LinearLayout choicelinear1 = (LinearLayout)findViewById(R.id.chocieBtn1);
+        LinearLayout choicelinear2 = (LinearLayout)findViewById(R.id.chocieBtn2);
 
 
-        Button choiceButton1 = (Button) findViewById(R.id.choiceButton1);
+
+      /*  Button choiceButton1 = (Button) findViewById(choiceButton1);
         Button choiceButton2 = (Button) findViewById(R.id.choiceButton2);
-        Button choiceButton3 = (Button) findViewById(R.id.choiceButton3);
+        Button choiceButton3 = (Button) findViewById(R.id.choiceButton3);*/
 
 
 
@@ -55,56 +56,41 @@ public class ChoiceActivity extends AppCompatActivity {
 
 
 
-        choiceButton1.setOnClickListener(new View.OnClickListener() {
+        choicelinear1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                c_soundPool.play(click_Sound,  //준비한 soundID 맥주따르는 효과음
-                        1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
-                        1, //오른쪽 볼륨 float
-                        1, //우선순위 int
-                        0, //반복회수 int -1:무한반복, 0:반복안함
-                        1); //재생속도 float 0.5(절반속도)~2.0(2배속)
+                sound();
 
                 Intent intent = new Intent(ChoiceActivity.this, ThemeActivity.class);
                 //        startActivityForResult(intent, 1);
                 intent.addFlags(intent.FLAG_ACTIVITY_FORWARD_RESULT);
                 startActivity(intent);
-                finish();
+                //finish();
             }
         });
 
 
 
 
-        choiceButton2.setOnClickListener(new View.OnClickListener() {
+        choicelinear2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                c_soundPool.play(click_Sound,  //준비한 soundID 맥주따르는 효과음
-                        1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
-                        1, //오른쪽 볼륨 float
-                        1, //우선순위 int
-                        0, //반복회수 int -1:무한반복, 0:반복안함
-                        1); //재생속도 float 0.5(절반속도)~2.0(2배속)
+                sound();
 
                 Toast.makeText(ChoiceActivity.this, "선택함", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(ChoiceActivity.this, CupActivity.class);
                 intent.addFlags(intent.FLAG_ACTIVITY_FORWARD_RESULT);
                 startActivity(intent);
-                finish();
+                //finish();
             }
         });
 
 
 
-        choiceButton3.setOnClickListener(new View.OnClickListener() {
+     /*   choiceButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                c_soundPool.play(click_Sound,  //준비한 soundID 맥주따르는 효과음
-                        1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
-                        1, //오른쪽 볼륨 float
-                        1, //우선순위 int
-                        0, //반복회수 int -1:무한반복, 0:반복안함
-                        1); //재생속도 float 0.5(절반속도)~2.0(2배속).
+                sound();
 
 
                 AlertDialog.Builder alert = new AlertDialog.Builder(ChoiceActivity.this);
@@ -121,7 +107,7 @@ public class ChoiceActivity extends AppCompatActivity {
                 alert.show();
             }
         });
-
+*/
 
 
 
@@ -141,16 +127,22 @@ public class ChoiceActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-               c_soundPool.play(click_Sound,  //준비한 soundID 맥주따르는 효과음
-                        1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
-                        1, //오른쪽 볼륨 float
-                        1, //우선순위 int
-                        0, //반복회수 int -1:무한반복, 0:반복안함
-                        1); //재생속도 float 0.5(절반속도)~2.0(2배속)
+                sound();
+
                 onBackPressed();
                 return true;
         }
         return super.onOptionsItemSelected(item);
 
+    }
+
+
+    public  void sound(){
+        c_soundPool.play(click_Sound,  //준비한 soundID 맥주따르는 효과음
+                1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
+                1, //오른쪽 볼륨 float
+                1, //우선순위 int
+                0, //반복회수 int -1:무한반복, 0:반복안함
+                1); //재생속도 float 0.5(절반속도)~2.0(2배속)
     }
 }

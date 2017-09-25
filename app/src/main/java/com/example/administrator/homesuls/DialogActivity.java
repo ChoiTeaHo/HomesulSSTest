@@ -61,12 +61,7 @@ public class DialogActivity extends AppCompatActivity {
         themebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                c_soundPool.play(click_Sound,  //준비한 soundID 맥주따르는 효과음
-                        1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
-                        1, //오른쪽 볼륨 float
-                        1, //우선순위 int
-                        0, //반복회수 int -1:무한반복, 0:반복안함
-                        1); //재생속도 float 0.5(절반속도)~2.0(2배속)
+                sound();
 
                 Intent intent = new Intent(DialogActivity.this, ChoiceActivity.class);
                 //        startActivityForResult(intent, 1);
@@ -81,12 +76,7 @@ public class DialogActivity extends AppCompatActivity {
         healthListViewbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                c_soundPool.play(click_Sound,  //준비한 soundID 맥주따르는 효과음
-                        1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
-                        1, //오른쪽 볼륨 float
-                        1, //우선순위 int
-                        0, //반복회수 int -1:무한반복, 0:반복안함
-                        1); //재생속도 float 0.5(절반속도)~2.0(2배속)
+                sound();
 
                 Intent intent = new Intent(DialogActivity.this, SubActivity.class);
                 startActivity(intent);
@@ -135,7 +125,7 @@ public class DialogActivity extends AppCompatActivity {
 
                 @Override
                 public void onStartTrackingTouch(SeekBar seekBar) {
-
+                    sound();
                 }
 
                 @Override
@@ -148,5 +138,16 @@ public class DialogActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+
+
+    public void sound(){
+        c_soundPool.play(click_Sound,  //준비한 soundID 맥주따르는 효과음
+                1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
+                1, //오른쪽 볼륨 float
+                1, //우선순위 int
+                0, //반복회수 int -1:무한반복, 0:반복안함
+                1); //재생속도 float 0.5(절반속도)~2.0(2배속)
     }
 }

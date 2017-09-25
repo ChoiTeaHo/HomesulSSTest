@@ -25,86 +25,33 @@
     </android.support.v7.widget.Toolbar>
 
 
+
+
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
         <LinearLayout
-            android:layout_width="200dp"
+            android:id="@+id/chocieBtn1"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="#ff98f8"
-            android:orientation="horizontal"
-            android:weightSum="5">
-
-            <Button
-                android:id="@+id/choiceButton1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="1dp"
-                android:layout_marginBottom="4dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="0dp"
-                android:backgroundTint="@color/colorTrans"
-                android:text="테마"
-                android:textSize="40dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="테마 선택하기"
-                android:textSize="30dp"
-                android:textStyle="bold" />
+            android:layout_weight="0.5"
+            android:background="@drawable/choicebutton1"
+            android:orientation="horizontal">
         </LinearLayout>
 
 
 
+
+
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimaryDark"
-            android:orientation="vertical"
-            android:weightSum="1">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="265dp"
-                android:layout_weight="0.5"
-                android:background="#b960e9">
-
-                <Button
-                    android:id="@+id/choiceButton2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginBottom="3dp"
-                    android:layout_marginLeft="1dp"
-                    android:layout_marginRight="2dp"
-                    android:backgroundTint="@color/colorTrans"
-                    android:text="컵 선택"
-                    android:textSize="40dp"/>
-
-            </LinearLayout>
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="265dp"
-                android:layout_weight="0.5"
-                android:background="#ef993e">
-
-                <Button
-                    android:id="@+id/choiceButton3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginLeft="1dp"
-                    android:layout_marginRight="2dp"
-                    android:backgroundTint="@color/colorTrans"
-                    android:text="음주 테스트"
-                    android:textSize="40dp"/>
-            </LinearLayout>
+            android:id="@+id/chocieBtn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:background="@drawable/choicebutton2"
+            android:orientation="vertical">
         </LinearLayout>
     </LinearLayout>
 

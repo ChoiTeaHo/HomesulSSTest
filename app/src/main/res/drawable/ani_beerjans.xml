@@ -1,0 +1,59 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+    <item android:drawable="@drawable/ani_beerjan" android:duration="10"/>
+
+
+
+
+
+</animation-list>

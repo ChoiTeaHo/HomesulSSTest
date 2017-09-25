@@ -34,6 +34,8 @@ import android.widget.Toast;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static com.example.administrator.homesuls.R.id.paperjan_Img;
+
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
 
@@ -53,14 +55,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     int sojuFlow_Sound; //소주 따르는 소리
     int beerFlow_Sound; // 맥주따르는소리
     int cheers_Sound1; //유리 건배소리
-    int papercheers_Sound1;
+    int papercheers_Sound1; //종이컵 건배소리임시
 
     int click_Sound; //클릭사운드
 
 
 //병 파트
     ImageView sojubootle_Img;
-    ImageView beerbottle_Img;
 
 
 
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     ImageView sojuflow_Img; //미니소주컵 Img
     AnimationDrawable sojuflow_Ani; //미니소주컵 Flow Ani
 
-    ImageView paperjan_Img; //건배소주컵img
+    ImageView effectjan_Img; //건배소주컵img
     AnimationDrawable paperjanAni; //AnimationDrawble를 가진 paperjanAni 변수선언 ( paperjan_Img 를 위해 사용할 것임. )
 
 /*
@@ -185,9 +186,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         sojuflow_Ani = (AnimationDrawable) sojuflow_Img.getBackground();
         sojuflow_Ani.setOneShot(true);
 
-        paperjan_Img = (ImageView) findViewById(R.id.paperjan_Img);
-        paperjan_Img.setBackgroundResource(R.drawable.ani_paperjan);
-        paperjanAni = (AnimationDrawable) paperjan_Img.getBackground();
+        //이펙트잔에 이펙트적용하기.
+        effectjan_Img = (ImageView) findViewById(paperjan_Img);
+        effectjan_Img.setBackgroundResource(R.drawable.ani_paperjan);
+        paperjanAni = (AnimationDrawable) effectjan_Img.getBackground();
 
 
 
@@ -281,6 +283,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     @Override
     public void onBackPressed() {  //백버튼을 눌렀을때 (센서리스너를 해제하니 종료가아닌백만눌러도 해제)
+
+
         mp.stop(); //배경음악 정지
         m_sensorManager.unregisterListener(this);
 
@@ -354,35 +358,38 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 //==================================================센서==================================================================================
     public void onSensorChanged(SensorEvent sensorEvent) {
         if (sensorEvent.values[0] == 0){   //근접했을때
-            Drawable imgttt = paperjan_Img.getBackground(); //투명화를 위한 imgttt 객체. 안에 커지는 애니 넣음 중복막기위해 편법
+            Drawable imgttt = effectjan_Img.getBackground(); //투명화를 위한 imgttt 객체. 안에 커지는 애니 넣음 중복막기위해 편법
             imgttt.setAlpha(255); // imgttt 객체에 투명 적용
 
             Animation scaleanimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.scale);  //스케일 트윈애니메이션. 점점커지는 맥주 애니메이션효과를 가진 scale.xml 받는 scaleanimation 객체 생성.
-            paperjan_Img.startAnimation(scaleanimation); //bigBeer_Img에 적용하고 애니메이션 실행 ( 점점 커지게 된다. )*//**//*
+            effectjan_Img.startAnimation(scaleanimation); //bigBeer_Img에 적용하고 애니메이션 실행 ( 점점 커지게 된다. )*//**//*
 
 
 
             paperjanAni.setVisible(false, false);
             //paperjan_Img.setVisibility(View.VISIBLE);
+
+            //유리잔하고싶으면 cheers_Sound1
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    m_soundPool.play(cheers_Sound1,  //준비한 soundID 맥주따르는 효과음
+                            1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
+                            1, //오른쪽 볼륨 float
+                            0, //우선순위 int
+                            0, //반복회수 int -1:무한반복, 0:반복안함
+                            1); //재생속도 float 0.5(절반속도)~2.0(2배속)
+
+
+                }
+            },800);
+
             paperjanAni.start();
 
             sojuflow_Img.setVisibility(View.INVISIBLE);
 
 
-             //유리잔하고싶으면 cheers_Sound1
-                    new Timer().schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            m_soundPool.play(cheers_Sound1,  //준비한 soundID 맥주따르는 효과음
-                                    1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
-                                    1, //오른쪽 볼륨 float
-                                    0, //우선순위 int
-                                    0, //반복회수 int -1:무한반복, 0:반복안함
-                                    1); //재생속도 float 0.5(절반속도)~2.0(2배속)
 
-
-                        }
-                    },800);
 
 
 
@@ -415,16 +422,16 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
         else{  //근접하지 않았을때
 
-            paperjan_Img.setVisibility(View.INVISIBLE); //소주잔 이펙트 보이게
+            effectjan_Img.setVisibility(View.INVISIBLE); //소주잔 이펙트 보이게
             paperjanAni.stop();
 
 
       /*      Animation ts = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.translate);  //트랜스레이트 애니메이션. 소주잔이 사이드로 나오는 애니메이션효과
             paperjan_Img.startAnimation(ts);*/
-            Drawable imgttt = paperjan_Img.getBackground();
+            Drawable imgttt = effectjan_Img.getBackground();
             imgttt.setAlpha(0);
 
-            paperjan_Img.setVisibility(View.INVISIBLE);
+            effectjan_Img.setVisibility(View.INVISIBLE);
 
             Animation t = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bouncescale);  //바운스 트윈애니메이션. 소주잔이 튀기는 애니메이션효과
             sojuflow_Img.startAnimation(t);
@@ -485,8 +492,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     //10번 부터는 컵/병/이펙트 선택
                     case "10": //종이컵
                         Toast.makeText(this, "10번선택", Toast.LENGTH_SHORT).show();
-                        paperjan_Img.setBackgroundResource(R.drawable.ani_paperjan);
-                        paperjanAni = (AnimationDrawable) paperjan_Img.getBackground();
+                        effectjan_Img.setBackgroundResource(R.drawable.ani_paperjan);
+                        paperjanAni = (AnimationDrawable) effectjan_Img.getBackground();
                         paperjanAni.setOneShot(true);
 
                         sojuflow_Img.setBackgroundResource(R.drawable.ani_soju);
@@ -503,8 +510,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
                     case "11": //맥주컵
                         Toast.makeText(this, "11번선택", Toast.LENGTH_SHORT).show();
-                        paperjan_Img.setBackgroundResource(R.drawable.ani_straightjan);
-                        paperjanAni = (AnimationDrawable) paperjan_Img.getBackground();
+                        effectjan_Img.setBackgroundResource(R.drawable.ani_straightjan);   //ani_straightjan
+                        paperjanAni = (AnimationDrawable) effectjan_Img.getBackground();
                         paperjanAni.setOneShot(true);
 
                         sojuflow_Img.setBackgroundResource(R.drawable.ani_beer);
