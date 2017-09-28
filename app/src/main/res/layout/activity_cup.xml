@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
+    android:weightSum="9"
     tools:context="com.example.administrator.homesuls.CupActivity"
     android:orientation="vertical">
 
@@ -23,19 +25,28 @@
             android:textColor="@android:color/white" />
     </android.support.v7.widget.Toolbar>
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
         android:weightSum="1"
-        android:baselineAligned="false">
+        android:baselineAligned="false"
+        android:layout_marginRight="14dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginBottom="15dp">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#ffaaad"
-            android:layout_weight="1">
+            android:layout_weight="0.5"
+            android:weightSum="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="15dp"
+            >
 
 
             <ImageButton
@@ -43,28 +54,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="#00000000"
                 android:onClick="cupClick1"
-                app:srcCompat="@drawable/soju9"
-                android:background="#00000000" />
-
+                app:srcCompat="@drawable/choicesojubutton" />
         </LinearLayout>
 
 
-
-
         <LinearLayout
-            android:layout_width="180dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#ac8ce4">
+            android:layout_weight="0.5"
+            android:weightSum="1"
+            android:background="#ac8ce4"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="15dp"
+            >
 
             <ImageButton
                 android:id="@+id/cup2"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="cupClick2"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/beer45"
-                android:background="#00000000" />
+                android:background="#00000000"
+                android:onClick="cupClick2"
+                app:srcCompat="@drawable/choicebeerbutton" />
         </LinearLayout>
     </LinearLayout>
 
@@ -82,42 +95,68 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3">
+        android:layout_weight="3"
+        android:weightSum="1"
+        android:layout_marginRight="14dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#ff0009"
-            android:layout_weight="1">
-        </LinearLayout>
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="0.5"
+            android:background="#ff0009" />
 
 
         <LinearLayout
-            android:layout_width="180dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#000000">
-        </LinearLayout>
+            android:layout_weight="0.5"
+            android:background="#9c8989"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="15dp"
+            />
+
     </LinearLayout>
+
+
+
+
 
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3">
+        android:layout_weight="3"
+        android:weightSum="1"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginBottom="40dp"
+        >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#fff200"
-            android:layout_weight="1">
-        </LinearLayout>
+            android:layout_weight="0.5"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="15dp"
+            />
+
 
 
         <LinearLayout
-            android:layout_width="180dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#00ff95">
-        </LinearLayout>
+            android:layout_weight="0.5"
+            android:background="#00ff95"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="15dp"/>
 
     </LinearLayout>
 

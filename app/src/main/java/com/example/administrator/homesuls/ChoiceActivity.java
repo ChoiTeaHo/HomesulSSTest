@@ -10,7 +10,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 public class ChoiceActivity extends AppCompatActivity {
 
@@ -65,7 +64,7 @@ public class ChoiceActivity extends AppCompatActivity {
                 //        startActivityForResult(intent, 1);
                 intent.addFlags(intent.FLAG_ACTIVITY_FORWARD_RESULT);
                 startActivity(intent);
-                //finish();
+                finish();
             }
         });
 
@@ -77,11 +76,10 @@ public class ChoiceActivity extends AppCompatActivity {
             public void onClick(View v) {
                 sound();
 
-                Toast.makeText(ChoiceActivity.this, "선택함", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(ChoiceActivity.this, CupActivity.class);
                 intent.addFlags(intent.FLAG_ACTIVITY_FORWARD_RESULT);
                 startActivity(intent);
-                //finish();
+                finish();
             }
         });
 
@@ -108,7 +106,6 @@ public class ChoiceActivity extends AppCompatActivity {
             }
         });
 */
-
 
 
 

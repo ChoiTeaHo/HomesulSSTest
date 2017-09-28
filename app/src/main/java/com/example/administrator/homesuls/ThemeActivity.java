@@ -17,6 +17,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import static com.example.administrator.homesuls.R.drawable.chevron_left1;
+import static com.example.administrator.homesuls.R.drawable.chevron_left_white;
+import static com.example.administrator.homesuls.R.drawable.chevron_right1;
+import static com.example.administrator.homesuls.R.drawable.chevron_right_white;
+
 /**
  * Created by SJ on 2017-08-12.
  */
@@ -117,7 +122,7 @@ public class ThemeActivity extends AppCompatActivity {
 
             case R.id.btn_previous:
                 flipper.showPrevious();         //이전 View로 교체
-                previousBtn.setImageResource(R.drawable.chevron_left_white);
+                previousBtn.setImageResource(chevron_left1);
                 switch (child){
                     case 0: sound();
                         themeText.setText("세번째 테마");
@@ -132,16 +137,16 @@ public class ThemeActivity extends AppCompatActivity {
                 mHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        previousBtn.setImageResource(R.drawable.chevron_left);
+                        previousBtn.setImageResource(chevron_left_white);
                     }
-                }, 300);
+                }, 10);
                 break;
 
 
 
             case R.id.btn_next:
                 flipper.showNext();             //다음 View로 교체
-                nextBtn.setImageResource(R.drawable.chevron_right_white);
+                nextBtn.setImageResource(chevron_right1);
                 switch (child){
                     case 0: sound();
                         themeText.setText("두번째 테마");
@@ -156,9 +161,9 @@ public class ThemeActivity extends AppCompatActivity {
                 mHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        nextBtn.setImageResource(R.drawable.chevron_right);
+                        nextBtn.setImageResource(chevron_right_white);
                     }
-                }, 300);
+                }, 10);
                 break;
 
 

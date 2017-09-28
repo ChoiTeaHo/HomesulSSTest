@@ -19,17 +19,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".DialogActivity"
             android:theme="@style/AppThemeDioalog" />
+
         <activity android:name=".SubActivity" />
         <activity android:name=".ItemView" />
-        <activity android:name=".ThemeActivity" />
-        <activity android:name=".ChoiceActivity" />
-        <activity android:name=".CupActivity"></activity>
+
+
+        <activity android:name=".ThemeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ChoiceActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".CupActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

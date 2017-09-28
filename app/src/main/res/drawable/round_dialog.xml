@@ -5,13 +5,12 @@
     android:padding="10dp">
 
     <solid android:color="#a0000000"/>
-    <corners ndroid:bottomLeftRadius="10dp"
-        android:bottomRightRadius="10dp"
-        android:topLeftRadius="10dp"
-        android:topRightRadius="10dp"/>
+    <corners ndroid:bottomLeftRadius="2dp"
+        android:bottomRightRadius="2dp"
+        android:topLeftRadius="2dp"
+        android:topRightRadius="2dp"/>
     <stroke android:width="2dp"
-        android:color="#FFFFFFFF"
-        />
+        android:color="#FFFFFFFF" />
 
 
 

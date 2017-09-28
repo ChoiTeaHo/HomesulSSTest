@@ -23,7 +23,7 @@
 
 
     <style name="SplashThemeparent" parent="@android:style/Theme.NoTitleBar">
-        <item name="android:windowBackground">@drawable/splashimg</item>
+        <item name="android:windowBackground">@drawable/splashimg1</item>
     </style>
 
 

@@ -105,6 +105,7 @@ public class CupActivity extends AppCompatActivity {
                     finish();
                     break;
 
+
                 case R.id.cup2:
                     a=11;
                     returnIntent.putExtra("선택한 이미지", String.valueOf(a));

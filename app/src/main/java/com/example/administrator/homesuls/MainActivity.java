@@ -29,17 +29,14 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.webkit.CookieManager;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static com.example.administrator.homesuls.R.id.paperjan_Img;
-
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
 
-
+    String result;
 //배경음 파트
     AudioManager soundMode;  //사운드 모드 (무음/소리 등)
     private static MediaPlayer mp; //배경음 재생을 위한 MediaPlayer을 가지는 mp.
@@ -60,27 +57,26 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     int click_Sound; //클릭사운드
 
 
+
 //병 파트
-    ImageView sojubootle_Img;
+    ImageView bootle_Img;
 
 
 
 //애니메이션 파트
-
-    ImageView sojuflow_Img; //미니소주컵 Img
-    AnimationDrawable sojuflow_Ani; //미니소주컵 Flow Ani
-
-    ImageView effectjan_Img; //건배소주컵img
-    AnimationDrawable paperjanAni; //AnimationDrawble를 가진 paperjanAni 변수선언 ( paperjan_Img 를 위해 사용할 것임. )
-
-/*
-    ImageView character_Img;  //눈깜빡이는img
-    AnimationDrawable characterAni;  //AnimationDrawble를 가진 characterAni 변수선언 ( character_Img 를 위해 사용할 것임. )
+    //플로우와 이펙트 그릇
+    ImageView flowcup_Img; // 플로우이미지 Img
+    ImageView effectcup_Img; // 이펙트컵 img
 
 
-    ImageView flowBeer_Img; //맥주따르는img
-    AnimationDrawable ani; //AnimationDrawble를 가진 ani 변수선언 ( flowBeer_Img 를 위해 사용할 것임.)
-*/
+
+
+
+    //플로우와 이펙트 디폴트 값 대상.
+    AnimationDrawable flowcup_Ani; // 플로우소주컵 ani
+    AnimationDrawable effetpapersojucup_Ani; // 이펙트소주컵 ani
+
+
 
 
 
@@ -176,35 +172,27 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 //=============================================================================================================================================
 
-
-        sojubootle_Img = (ImageView) findViewById(R.id.sojubottle_Img);
-
-
-
-        sojuflow_Img = (ImageView) findViewById(R.id.sojuflow_Img);
-        sojuflow_Img.setBackgroundResource(R.drawable.ani_soju);
-        sojuflow_Ani = (AnimationDrawable) sojuflow_Img.getBackground();
-        sojuflow_Ani.setOneShot(true);
-
-        //이펙트잔에 이펙트적용하기.
-        effectjan_Img = (ImageView) findViewById(paperjan_Img);
-        effectjan_Img.setBackgroundResource(R.drawable.ani_paperjan);
-        paperjanAni = (AnimationDrawable) effectjan_Img.getBackground();
+        //bottle 이미지 명시하기 디폴트 값 == 소주병
+        bootle_Img = (ImageView) findViewById(R.id.bootle_Img);
 
 
 
+        //플로우컵 명시하기 디폴트값 ani_flowpapersojucup  == 종이소주컵
+        flowcup_Img = (ImageView) findViewById(R.id.flowcup_Img);  //플로우컵 객체 생성
+        flowcup_Img.setBackgroundResource(R.drawable.ani_flowpapersojucup);  //플로우컵 객체에    flow 종이소주컵애니메이션 넣기
+        flowcup_Ani = (AnimationDrawable) flowcup_Img.getBackground(); // 애니메이션 변수에 삽입.
+        flowcup_Ani.setOneShot(true);
 
 
-//==================================================================================================
+        //이펙트컵 애니메이션 적용하기.
+        effectcup_Img = (ImageView) findViewById(R.id.effectcup_Img);
+        effectcup_Img.setBackgroundResource(R.drawable.ani_effectpapersojucup);
+        effetpapersojucup_Ani = (AnimationDrawable) effectcup_Img.getBackground();
 
-/*        character_Img = (ImageView) findViewById(R.id.character_Img); //character_Img 객체에 ImageView를 xml에서 명시받음
-        character_Img.setBackgroundResource(R.drawable.ani_maincharacter); //명시받은 character_Img의 백그라운드 리소스를 ani_maincharacter.xml로 지정
-        characterAni = (AnimationDrawable) character_Img.getBackground(); // characterAni 애니메이션에 리소스지정한 character_Imgw의 백그라운드를 넣음
 
-        flowBeer_Img = (ImageView) findViewById(R.id.flowBeer_Img); //1은 맥주 따르는 이미지
-        flowBeer_Img.setBackgroundResource(R.drawable.ani_beer); //맥주 Frame Animation 파일을 불러와 img(맥주따르는이미지)의 배경리소스를 set하ㅣㅇ바꿔줌.
-        ani = (AnimationDrawable) flowBeer_Img.getBackground();
-        ani.setOneShot(true);*/
+
+
+
 
 
 
@@ -241,6 +229,27 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
     }  //절대영역
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //=====================================================라이프사이클 생명주기============================================================================
@@ -355,19 +364,58 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         return true;}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //==================================================센서==================================================================================
     public void onSensorChanged(SensorEvent sensorEvent) {
         if (sensorEvent.values[0] == 0){   //근접했을때
-            Drawable imgttt = effectjan_Img.getBackground(); //투명화를 위한 imgttt 객체. 안에 커지는 애니 넣음 중복막기위해 편법
+            Drawable imgttt = effectcup_Img.getBackground(); //투명화를 위한 imgttt 객체. 안에 커지는 애니 넣음 중복막기위해 편법
             imgttt.setAlpha(255); // imgttt 객체에 투명 적용
 
             Animation scaleanimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.scale);  //스케일 트윈애니메이션. 점점커지는 맥주 애니메이션효과를 가진 scale.xml 받는 scaleanimation 객체 생성.
-            effectjan_Img.startAnimation(scaleanimation); //bigBeer_Img에 적용하고 애니메이션 실행 ( 점점 커지게 된다. )*//**//*
-
-
-
-            paperjanAni.setVisible(false, false);
+            effectcup_Img.startAnimation(scaleanimation); //bigBeer_Img에 적용하고 애니메이션 실행 ( 점점 커지게 된다. )*//**//*
+            effetpapersojucup_Ani.setVisible(false, false);
             //paperjan_Img.setVisibility(View.VISIBLE);
+
+            effetpapersojucup_Ani.start();
+
 
             //유리잔하고싶으면 cheers_Sound1
             new Timer().schedule(new TimerTask() {
@@ -384,9 +432,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 }
             },800);
 
-            paperjanAni.start();
 
-            sojuflow_Img.setVisibility(View.INVISIBLE);
+            flowcup_Img.setVisibility(View.INVISIBLE);
 
 
 
@@ -422,23 +469,23 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
         else{  //근접하지 않았을때
 
-            effectjan_Img.setVisibility(View.INVISIBLE); //소주잔 이펙트 보이게
-            paperjanAni.stop();
+            effectcup_Img.setVisibility(View.INVISIBLE); //소주잔 이펙트 보이게
+            effetpapersojucup_Ani.stop();
 
 
       /*      Animation ts = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.translate);  //트랜스레이트 애니메이션. 소주잔이 사이드로 나오는 애니메이션효과
             paperjan_Img.startAnimation(ts);*/
-            Drawable imgttt = effectjan_Img.getBackground();
+            Drawable imgttt = effectcup_Img.getBackground();
             imgttt.setAlpha(0);
 
-            effectjan_Img.setVisibility(View.INVISIBLE);
+            effectcup_Img.setVisibility(View.INVISIBLE);
 
             Animation t = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bouncescale);  //바운스 트윈애니메이션. 소주잔이 튀기는 애니메이션효과
-            sojuflow_Img.startAnimation(t);
+            flowcup_Img.startAnimation(t);
 
 
-            sojuflow_Img.setVisibility(View.VISIBLE);
-            sojuflow_Ani.start();
+            flowcup_Img.setVisibility(View.VISIBLE);
+            flowcup_Ani.start();
 
 
             m_soundPool.play(sojuFlow_Sound,  //준비한 soundID 맥주따르는 효과음
@@ -475,56 +522,84 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         ConstraintLayout linearLayout = (ConstraintLayout) findViewById(R.id.Rela);
         if (requestCode == 1){
             if(resultCode == Activity.RESULT_OK){
-                String result = data.getStringExtra("선택한 이미지");
+                result = data.getStringExtra("선택한 이미지");
 //                Toast.makeText(MainActivity.this, result, Toast.LENGTH_LONG).show();
+
+
+
+
                 switch (result){
                     case "0":
-                        linearLayout.setBackgroundResource(R.drawable.mainbackground);
+                        linearLayout.setBackgroundResource(R.drawable.examplebackground);  // 테마선택 나무
                         break;
                     case "1":
-                        linearLayout.setBackgroundResource(R.drawable.rentedroombackground);
+                        linearLayout.setBackgroundResource(R.drawable.rentedroombackground); //자취방
                         break;
                     case "2":
-                        linearLayout.setBackgroundResource(R.drawable.hangangbackground);
+                        linearLayout.setBackgroundResource(R.drawable.hangangbackground);  //한강
                         break;
+
+
+
 
 
                     //10번 부터는 컵/병/이펙트 선택
                     case "10": //종이컵
-                        Toast.makeText(this, "10번선택", Toast.LENGTH_SHORT).show();
-                        effectjan_Img.setBackgroundResource(R.drawable.ani_paperjan);
-                        paperjanAni = (AnimationDrawable) effectjan_Img.getBackground();
-                        paperjanAni.setOneShot(true);
+                        effectcup_Img.setBackgroundResource(R.drawable.ani_effectpapersojucup);
+                        effetpapersojucup_Ani = (AnimationDrawable) effectcup_Img.getBackground();
+                        effetpapersojucup_Ani.setOneShot(true);
 
-                        sojuflow_Img.setBackgroundResource(R.drawable.ani_soju);
-                        sojuflow_Ani = (AnimationDrawable) sojuflow_Img.getBackground();
-                        sojuflow_Ani.setOneShot(true);
+                        flowcup_Img.setBackgroundResource(R.drawable.ani_flowpapersojucup);
+                        flowcup_Ani = (AnimationDrawable) flowcup_Img.getBackground();
+                        flowcup_Ani.setOneShot(true);
 
-                        sojubootle_Img.setBackgroundResource(R.drawable.sojubottle);
-                        ConstraintLayout.LayoutParams layoutParams10 = (ConstraintLayout.LayoutParams)sojubootle_Img.getLayoutParams(); //RelativeLayout 커지는 맥주의 img 의 크기를 객체화
+
+                        //소주bottle 설정
+                        bootle_Img.setBackgroundResource(R.drawable.sojubottle);
+                        ConstraintLayout.LayoutParams layoutParams10 = (ConstraintLayout.LayoutParams)bootle_Img.getLayoutParams(); //RelativeLayout 커지는 맥주의 img 의 크기를 객체화
                         layoutParams10.width = 90; //가로 1000dp로 만들고 설정.
-                        sojubootle_Img.setLayoutParams(layoutParams10);
+                        bootle_Img.setLayoutParams(layoutParams10);
                         layoutParams10.height = 300; //세로 1800dp로 만들고 설정.
-                        sojubootle_Img.setLayoutParams(layoutParams10);
+                        bootle_Img.setLayoutParams(layoutParams10);
                         break;
 
+
+
+
+
+
+
+
                     case "11": //맥주컵
-                        Toast.makeText(this, "11번선택", Toast.LENGTH_SHORT).show();
-                        effectjan_Img.setBackgroundResource(R.drawable.ani_straightjan);   //ani_straightjan
-                        paperjanAni = (AnimationDrawable) effectjan_Img.getBackground();
-                        paperjanAni.setOneShot(true);
+                        effectcup_Img.setBackgroundResource(R.drawable.ani_effectbeernewcup);   //ani_straightjan
+                        effetpapersojucup_Ani = (AnimationDrawable) effectcup_Img.getBackground();
+                        effetpapersojucup_Ani.setOneShot(true);
 
-                        sojuflow_Img.setBackgroundResource(R.drawable.ani_beer);
-                        sojuflow_Ani = (AnimationDrawable) sojuflow_Img.getBackground();
-                        sojuflow_Ani.setOneShot(true);
 
-                        sojubootle_Img.setBackgroundResource(R.drawable.beerbottle);
-                        ConstraintLayout.LayoutParams layoutParams11 = (ConstraintLayout.LayoutParams)sojubootle_Img.getLayoutParams(); //RelativeLayout 커지는 맥주의 img 의 크기를 객체화
-                        layoutParams11.width = 200; //가로 1000dp로 만들고 설정.
-                        sojubootle_Img.setLayoutParams(layoutParams11);
-                        layoutParams11.height = 300; //세로 1800dp로 만들고 설정.
-                        sojubootle_Img.setLayoutParams(layoutParams11);
 
+          /*              // 준호가만든 새로운 맥주 컵 사이즈문제 확인했습니다.
+                        ConstraintLayout.LayoutParams layoutParams12 = (ConstraintLayout.LayoutParams)flowcup_Img.getLayoutParams(); //RelativeLayout 커지는 맥주의 img 의 크기를 객체화
+                        layoutParams12.width = 130; //가로 130dp로 만들고 설정.
+                        flowcup_Img.setLayoutParams(layoutParams12);
+                        layoutParams12.height = 320; //세로 320dp로 만들고 설정.
+                        flowcup_Img.setLayoutParams(layoutParams12);*/
+
+
+
+                        flowcup_Img.setBackgroundResource(R.drawable.ani_beernewcup);       //ani_beernewcup 사이즈문제 확인했습니다.
+                        flowcup_Ani = (AnimationDrawable) flowcup_Img.getBackground();
+                        flowcup_Ani.setOneShot(false);
+
+
+
+
+                        //맥주bottle 설정 및 사이즈조절.
+                        bootle_Img.setBackgroundResource(R.drawable.beerbottle);
+                        ConstraintLayout.LayoutParams layoutParams11 = (ConstraintLayout.LayoutParams)bootle_Img.getLayoutParams(); //RelativeLayout 커지는 맥주의 img 의 크기를 객체화
+                        layoutParams11.width = 110; //가로 1000dp로 만들고 설정.
+                        bootle_Img.setLayoutParams(layoutParams11);
+                        layoutParams11.height = 400; //세로 1800dp로 만들고 설정.
+                        bootle_Img.setLayoutParams(layoutParams11);
                         break;
 
                 }

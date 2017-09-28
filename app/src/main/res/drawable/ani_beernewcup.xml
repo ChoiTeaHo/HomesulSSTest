@@ -1,0 +1,70 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/beernewcup1" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup2" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup3" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup4" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup5" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup6" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup7" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup8" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup9" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup10" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup11" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup12" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup13" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup14" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup15" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup16" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup17" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup18" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup19" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup20" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup21" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup22" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup23" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup24" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup25" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup26" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup27" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup28" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup29" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup30" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup31" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup32" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup33" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup34" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup35" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup36" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup37" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup38" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup39" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup40" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup41" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup42" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup43" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup44" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup45" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup46" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup47" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup48" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup49" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup50" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup51" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup52" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup53" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup54" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup55" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup56" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup57" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup58" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup59" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup60" android:duration="10"/>
+    <item android:drawable="@drawable/beernewcup61" android:duration="10"/>
+
+
+
+
+
+
+</animation-list>

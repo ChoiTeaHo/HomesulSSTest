@@ -1,0 +1,30 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/efftectbeernewcup1" android:duration="500"/>
+    <item android:drawable="@drawable/efftectbeernewcup2" android:duration="10"/>
+    <item android:drawable="@drawable/efftectbeernewcup3" android:duration="10"/>
+    <item android:drawable="@drawable/efftectbeernewcup4" android:duration="10"/>
+    <item android:drawable="@drawable/efftectbeernewcup5" android:duration="10"/>
+    <item android:drawable="@drawable/efftectbeernewcup6" android:duration="10"/>
+    <item android:drawable="@drawable/efftectbeernewcup7" android:duration="10"/>
+    <item android:drawable="@drawable/efftectbeernewcup8" android:duration="10"/>
+    <item android:drawable="@drawable/efftectbeernewcup9" android:duration="10"/>
+    <item android:drawable="@drawable/efftectbeernewcup10" android:duration="10"/>
+    <item android:drawable="@drawable/efftectbeernewcup11" android:duration="10"/>
+    <item android:drawable="@drawable/efftectbeernewcup12" android:duration="10"/>
+    <item android:drawable="@drawable/efftectbeernewcup13" android:duration="10"/>
+    <item android:drawable="@drawable/efftectbeernewcup14" android:duration="10"/>
+    <item android:drawable="@drawable/efftectbeernewcup15" android:duration="10"/>
+    <item android:drawable="@drawable/efftectbeernewcup16" android:duration="10"/>
+    <item android:drawable="@drawable/efftectbeernewcup17" android:duration="10"/>
+    <item android:drawable="@drawable/efftectbeernewcup18" android:duration="10"/>
+    <item android:drawable="@drawable/efftectbeernewcup19" android:duration="10"/>
+    <item android:drawable="@drawable/efftectbeernewcup20" android:duration="10"/>
+    <item android:drawable="@drawable/efftectbeernewcup21" android:duration="10"/>
+    <item android:drawable="@drawable/efftectbeernewcup22" android:duration="10"/>
+
+
+
+
+
+</animation-list>

@@ -2,11 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/round_dialog"
-    android:id="@+id/layoutBackground">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,65 +15,95 @@
         android:weightSum="1">
 
 
-    <ImageButton
-        android:id="@+id/themeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:backgroundTint="@color/colorTrans"
-
-        app:srcCompat="@android:drawable/ic_menu_compass"
-        tools:layout_editor_absoluteY="257dp"
-        tools:layout_editor_absoluteX="31dp" />
-
-    <ImageButton
-        android:id="@+id/healthListViewButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:backgroundTint="@color/colorTrans"
-
-        app:srcCompat="@android:drawable/ic_menu_edit"
-        tools:layout_editor_absoluteY="257dp"
-        tools:layout_editor_absoluteX="104dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:weightSum="1"
+            android:orientation="horizontal">
 
 
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:layout_gravity="bottom"
+                android:orientation="horizontal">
+
+
+                <ImageButton
+                    android:id="@+id/themeButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:background="#00000000"
+                    app:srcCompat="@drawable/testdialog"/>
+            </LinearLayout>
+
+
+
+
+
+            <LinearLayout
+                android:id="@+id/helthListViewLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5">
+                <ImageButton
+                    android:id="@+id/healthListViewButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:background="#00000000"
+
+                    app:srcCompat="@drawable/testdialog2"
+                    tools:layout_editor_absoluteX="104dp"
+                    tools:layout_editor_absoluteY="257dp" />
+            </LinearLayout>
+
+
+
+
+
+
+
+
+        </LinearLayout>
     </LinearLayout>
 
 
-
-
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#ffffff"></LinearLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.1"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:layout_weight="0.1">
+
         <ImageButton
             android:id="@+id/soundButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:backgroundTint="@color/colorTrans"
-
-            app:srcCompat="@mipmap/ic_volume_up_white_24dp"
-            />
+            android:layout_height="45dp"
+            android:layout_marginLeft="10dp"
+            android:background="#00000000"
+            app:srcCompat="@mipmap/ic_volume_up_white_24dp" />
 
         <SeekBar
             android:id="@+id/seekvolume"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
-
             android:padding="13dip" />
-
     </LinearLayout>
-
-
-
-
 
 
 </LinearLayout>
