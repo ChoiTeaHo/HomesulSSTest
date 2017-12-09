@@ -40,6 +40,7 @@
                     android:id="@+id/themeButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:clickable="true"
                     android:layout_gravity="bottom"
                     android:background="#00000000"
                     app:srcCompat="@drawable/testdialog"/>
@@ -58,6 +59,7 @@
                     android:id="@+id/healthListViewButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
                     android:layout_gravity="bottom"
                     android:background="#00000000"
 
@@ -87,7 +89,16 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="center"
-        android:layout_weight="0.1">
+        android:layout_weight="0.1"
+        android:weightSum="1">
+
+        <ImageButton
+            android:id="@+id/helpButton"
+            android:layout_width="62dp"
+            android:layout_height="47dp"
+            android:clickable="true"
+            android:background="#00000000"
+            app:srcCompat="@mipmap/ic_help_white_24dp" />
 
         <ImageButton
             android:id="@+id/soundButton"
@@ -103,6 +114,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:padding="13dip" />
+
     </LinearLayout>
 
 

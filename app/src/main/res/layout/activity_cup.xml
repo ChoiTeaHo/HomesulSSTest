@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
@@ -20,33 +22,29 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/toolbar_textview"
-            android:text="CupActivity"
-            android:textColor="@android:color/white" />
+            android:id="@+id/toolbar_textview" />
     </android.support.v7.widget.Toolbar>
-
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
-        android:weightSum="1"
-        android:baselineAligned="false"
-        android:layout_marginRight="14dp"
+        android:layout_marginBottom="15dp"
         android:layout_marginLeft="14dp"
-        android:layout_marginBottom="15dp">
+        android:layout_marginRight="14dp"
+        android:layout_weight="3"
+        android:baselineAligned="false"
+        android:weightSum="1">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#ffaaad"
-            android:layout_weight="0.5"
-            android:weightSum="1"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="15dp"
-            >
+            android:layout_weight="0.5"
+            android:background="#ffaaad"
+            android:clickable="true"
+            android:weightSum="1">
 
 
             <ImageButton
@@ -63,12 +61,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:weightSum="1"
-            android:background="#ac8ce4"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="15dp"
-            >
+            android:layout_weight="0.5"
+            android:background="#ac8ce4"
+            android:weightSum="1">
 
             <ImageButton
                 android:id="@+id/cup2"
@@ -76,19 +73,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#00000000"
+                android:clickable="true"
                 android:onClick="cupClick2"
                 app:srcCompat="@drawable/choicebeerbutton" />
         </LinearLayout>
     </LinearLayout>
-
-
-
-
-
-
-
-
-
 
 
 
@@ -109,7 +98,18 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="15dp"
             android:layout_weight="0.5"
-            android:background="#ff0009" />
+            android:background="#ff0009" >
+
+            <ImageButton
+                android:id="@+id/cup3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:clickable="true"
+                android:onClick="cupClick3"
+                app:srcCompat="@drawable/choicecanbutton" />
+        </LinearLayout>
 
 
         <LinearLayout
@@ -119,7 +119,16 @@
             android:background="#9c8989"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="15dp"
-            />
+            >
+
+            <ImageButton
+                android:id="@+id/cup4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#00000000"
+                app:srcCompat="@drawable/question" />
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -146,7 +155,16 @@
             android:layout_weight="0.5"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="15dp"
-            />
+            >
+
+            <ImageButton
+                android:id="@+id/cup5"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#00000000"
+                app:srcCompat="@drawable/question" />
+        </LinearLayout>
 
 
 
@@ -156,11 +174,31 @@
             android:layout_weight="0.5"
             android:background="#00ff95"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="15dp"/>
+            android:layout_marginRight="15dp">
+
+            <ImageButton
+                android:id="@+id/cup6"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#00000000"
+                app:srcCompat="@drawable/question" />
+        </LinearLayout>
 
     </LinearLayout>
 
 
 
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_ad_unit_id_choice"/>
+    </LinearLayout>
 </LinearLayout>

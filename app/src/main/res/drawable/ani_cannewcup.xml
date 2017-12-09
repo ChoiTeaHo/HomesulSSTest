@@ -1,0 +1,36 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/cannewcup1" android:duration="27"/>
+    <item android:drawable="@drawable/cannewcup2" android:duration="27"/>
+    <item android:drawable="@drawable/cannewcup3" android:duration="27"/>
+    <item android:drawable="@drawable/cannewcup4" android:duration="27"/>
+    <item android:drawable="@drawable/cannewcup5" android:duration="27"/>
+    <item android:drawable="@drawable/cannewcup6" android:duration="27"/>
+    <item android:drawable="@drawable/cannewcup7" android:duration="27"/>
+    <item android:drawable="@drawable/cannewcup8" android:duration="27"/>
+    <item android:drawable="@drawable/cannewcup9" android:duration="27"/>
+    <item android:drawable="@drawable/cannewcup10" android:duration="27"/>
+    <item android:drawable="@drawable/cannewcup11" android:duration="27"/>
+    <item android:drawable="@drawable/cannewcup12" android:duration="27"/>
+    <item android:drawable="@drawable/cannewcup13" android:duration="27"/>
+    <item android:drawable="@drawable/cannewcup14" android:duration="27"/>
+    <item android:drawable="@drawable/cannewcup15" android:duration="27"/>
+    <item android:drawable="@drawable/cannewcup16" android:duration="27"/>
+    <item android:drawable="@drawable/cannewcup17" android:duration="27"/>
+    <item android:drawable="@drawable/cannewcup18" android:duration="27"/>
+    <item android:drawable="@drawable/cannewcup19" android:duration="27"/>
+    <item android:drawable="@drawable/cannewcup20" android:duration="27"/>
+    <item android:drawable="@drawable/cannewcup21" android:duration="27"/>
+    <item android:drawable="@drawable/cannewcup22" android:duration="27"/>
+    <item android:drawable="@drawable/cannewcup23" android:duration="27"/>
+    <item android:drawable="@drawable/cannewcup24" android:duration="27"/>
+    <item android:drawable="@drawable/cannewcup25" android:duration="27"/>
+    <item android:drawable="@drawable/cannewcup26" android:duration="27"/>
+    <item android:drawable="@drawable/cannewcup27" android:duration="27"/>
+
+
+
+
+
+
+</animation-list>

@@ -33,8 +33,11 @@ import android.widget.ImageView;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static com.example.administrator.homesuls.R.id.menuOption_Item;
+
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
+    int so =10;
 
     String result;
 //배경음 파트
@@ -51,8 +54,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     SoundPool m_soundPool; // Sound Pool 을 담는 그릇
     int sojuFlow_Sound; //소주 따르는 소리
     int beerFlow_Sound; // 맥주따르는소리
+    int canFlow_Sound; //캔 따르는(따는) 소리
+
     int cheers_Sound1; //유리 건배소리
     int papercheers_Sound1; //종이컵 건배소리임시
+    int cancheers_Sound1; //캔 건배소리
 
     int click_Sound; //클릭사운드
 
@@ -147,6 +153,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
 
+
 //=============================================모드 사운드==========================================================================================
         soundMode = (AudioManager)getBaseContext().getSystemService(Context.AUDIO_SERVICE);  // 사운드 ON OFF를 위한 현재 오디오 모드확인.
 
@@ -162,11 +169,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 //=============================================사운드==========================================================================================
         m_soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0); // 최대 음악파일의 개수, 스트림타입, 음질 기본값0
 
-        beerFlow_Sound = m_soundPool.load(this, R.raw.beerflowbgm, 1);   //맥주따르는소리    // 각 재생음악을 미리준비함. this는 현재화면 제어권자 , 1은 우선순위//1은 우선순위
+        beerFlow_Sound = m_soundPool.load(this, R.raw.beerflowcutbgm, 1);   //맥주따르는소리    // 각 재생음악을 미리준비함. this는 현재화면 제어권자 , 1은 우선순위//1은 우선순위
         sojuFlow_Sound = m_soundPool.load(this, R.raw.sojuflowbgm, 1);   //소주따르는소리
+        canFlow_Sound = m_soundPool.load(this,R.raw.canflowbgm, 1); //캔따르는(따는)소리
 
         cheers_Sound1 = m_soundPool.load(this, R.raw.cheerssound, 1);    //소주잔 건배소리
-        papercheers_Sound1 = m_soundPool.load(this, R.raw.papercheerssoundm, 1); //종이컵 건배소리
+        papercheers_Sound1 = m_soundPool.load(this, R.raw.papercheers_sound, 1); //종이컵 건배소리
+        cancheers_Sound1 = m_soundPool.load(this, R.raw.cancheers_sound, 1);
 
         click_Sound = m_soundPool.load(this, R.raw.clicksound, 1);    //버튼클릭 소리
 
@@ -198,9 +207,18 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
 
+
 //====================================================================================================================================
         m_sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);  //센서
         m_sensor = m_sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);  //센서
+
+
+
+
+
+
+
+
         //m_sensorManager.registerListener(this, m_sensor, m_sensorManager.SENSOR_DELAY_NORMAL);  //센서등록
 
 
@@ -222,6 +240,26 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         actionBar.setDisplayHomeAsUpEnabled(false); // 뒤로가기 버튼, 디폴트로 true만 해도 백버튼이 생김
 
         //actionBar.setHomeAsUpIndicator(R.drawable.button_back); //뒤로가기 버튼을 본인이 만든 아이콘으로 하기 위해 필요함.  하지만 Main 에서는 필요없기 때문에 주석처리.
+//==================================================================================================================================
+
+
+//=================================================게시판 보틀버튼====================================================================
+        bootle_Img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                m_soundPool.play(click_Sound,  //준비한 soundID 맥주따르는 효과음
+                        1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
+                        1, //오른쪽 볼륨 float
+                        1, //우선순위 int
+                        0, //반복회수 int -1:무한반복, 0:반복안함
+                        1); //재생속도 float 0.5(절반속도)~2.0(2배속)
+
+               Intent CIntent = new Intent(MainActivity.this, ChatActivity.class); //게시판실행
+                startActivity(CIntent);
+            }
+        });
+//========================================================================================================================================
+
 
 
 
@@ -229,7 +267,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
     }  //절대영역
-
 
 
 
@@ -282,6 +319,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     @Override
     protected void onUserLeaveHint() {  //홈버튼을 눌렀을때
+/*        m_soundPool.stop(clickSnd);
+*//* SoundPool 자원해제. SoundPool 개체에서 사용하는 모든 메모리와 네이티브 리소스를 해제. SoundPool은 더 이상 사용될 수 없고 참조가 null로 설정되어야합니다. *//*
+        soundPool.release();
+        soundPool = null;*/
+
+
 
 
         mp.pause(); //배경음악 일시정지
@@ -293,6 +336,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     public void onBackPressed() {  //백버튼을 눌렀을때 (센서리스너를 해제하니 종료가아닌백만눌러도 해제)
 
+        m_soundPool.play(click_Sound,1,1,1,0,1);
 
         mp.stop(); //배경음악 정지
         m_sensorManager.unregisterListener(this);
@@ -338,101 +382,104 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 //==========================================툴바옵션메뉴생성=========================================================================================
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();   //인플레이터를 사용하여 결합
+    public boolean onCreateOptionsMenu(Menu menu) {  //디바이스의 Menu 버튼이 처음 눌러졋을 때 한번 호출되는 메소드
+        final MenuInflater inflater = getMenuInflater();   //인플레이터를 사용하여 결합
         inflater.inflate(R.menu.menu_toolbar, menu); //menu 폴더에 정의하고 만들어놓은 menu_toolbar.xml 파일을 inflater, 레퍼런스는 menu를 사용
         return true;
     }
 
-
+    /*@Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.menuOption_Item).setIcon(R.drawable.ic_crop_original_white_24dp);
+        return super.onPrepareOptionsMenu(menu);
+    }*/
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.menuOption_Item){  //menu 폴더에 정의하고 만들어놓은 menu_toolbar.xml 안에서 정의한 item 이 menuOption_Item 일때
+    public boolean onOptionsItemSelected(MenuItem item) { //OptionMenu의 MenuItem 중 하나를 눌렀을 때 자동으로 호출되는 메소드
+        if (item.getItemId() == menuOption_Item){  //menu 폴더에 정의하고 만들어놓은 menu_toolbar.xml 안에서 정의한 item 이 menuOption_Item 일때
             m_soundPool.play(click_Sound,  //준비한 soundID 맥주따르는 효과음
                     1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
                     1, //오른쪽 볼륨 float
                     1, //우선순위 int
                     0, //반복회수 int -1:무한반복, 0:반복안함
                     1); //재생속도 float 0.5(절반속도)~2.0(2배속)
-            Intent intent = new Intent(MainActivity.this, DialogActivity.class);  // DialogActivity 시작. (  DialogActivity 는 액티비티를 다이얼로그형태로 구현한 액티비티임.)
-            startActivityForResult(intent, 1);
+
+
+            try{
+                Intent intent = new Intent(MainActivity.this, DialogActivity.class);  // DialogActivity 시작. (  DialogActivity 는 액티비티를 다이얼로그형태로 구현한 액티비티임.)
+                startActivityForResult(intent, 1);
+                Thread.sleep(300);
+            }catch (InterruptedException e){
+                e.printStackTrace();
+            }
+
+
 
         }
-
-
-        return true;}
-
-
+        return true;
+    }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//==================================================센서==================================================================================
+    //==================================================센서==================================================================================
     public void onSensorChanged(SensorEvent sensorEvent) {
         if (sensorEvent.values[0] == 0){   //근접했을때
             Drawable imgttt = effectcup_Img.getBackground(); //투명화를 위한 imgttt 객체. 안에 커지는 애니 넣음 중복막기위해 편법
             imgttt.setAlpha(255); // imgttt 객체에 투명 적용
 
-            Animation scaleanimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.scale);  //스케일 트윈애니메이션. 점점커지는 맥주 애니메이션효과를 가진 scale.xml 받는 scaleanimation 객체 생성.
-            effectcup_Img.startAnimation(scaleanimation); //bigBeer_Img에 적용하고 애니메이션 실행 ( 점점 커지게 된다. )*//**//*
-            effetpapersojucup_Ani.setVisible(false, false);
-            //paperjan_Img.setVisibility(View.VISIBLE);
-
-            effetpapersojucup_Ani.start();
+            Animation scaleanimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.scale);//scale.xml 받는 scaleanimation 객체 생성.
+            effectcup_Img.startAnimation(scaleanimation); //트윈애니메이션 적용하고 애니메이션 실행 ( 점점 커지게 된다. )
+            effetpapersojucup_Ani.setVisible(false, false); //화면에 표시
+            effetpapersojucup_Ani.start(); //이펙트 애니메이션 시작
 
 
-            //유리잔하고싶으면 cheers_Sound1
-            new Timer().schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    m_soundPool.play(cheers_Sound1,  //준비한 soundID 맥주따르는 효과음
-                            1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
-                            1, //오른쪽 볼륨 float
-                            0, //우선순위 int
-                            0, //반복회수 int -1:무한반복, 0:반복안함
-                            1); //재생속도 float 0.5(절반속도)~2.0(2배속)
+            switch (so) {
+                case 10:
+                    new Timer().schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            m_soundPool.play(papercheers_Sound1,  //준비한 soundID 종이컵 효과음
+                                    1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
+                                    1, //오른쪽 볼륨 float
+                                    0, //우선순위 int
+                                    0, //반복회수 int -1:무한반복, 0:반복안함
+                                    1); //재생속도 float 0.5(절반속도)~2.0(2배속)
+                        }
+                    }, 800);
+                    break;
+                case 11:
+                    if (so == 11) {
+                        new Timer().schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                m_soundPool.play(cheers_Sound1,  //준비한 soundID beer 따르는 효과음
+                                        1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
+                                        1, //오른쪽 볼륨 float
+                                        0, //우선순위 int
+                                        0, //반복회수 int -1:무한반복, 0:반복안함
+                                        1); //재생속도 float 0.5(절반속도)~2.0(2배속)
+                            }
+                        }, 800);
+                    }
+                    break;
 
-
-                }
-            },800);
-
-
+                case 12:
+                    if (so == 12) {
+                        new Timer().schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                m_soundPool.play(cancheers_Sound1,  //준비한 soundID can 따는 효과음
+                                        1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
+                                        1, //오른쪽 볼륨 float
+                                        0, //우선순위 int
+                                        0, //반복회수 int -1:무한반복, 0:반복안함
+                                        1); //재생속도 float 0.5(절반속도)~2.0(2배속)
+                            }
+                        }, 800);
+                    }
+                    break;
+            }
             flowcup_Img.setVisibility(View.INVISIBLE);
 
 
@@ -469,32 +516,42 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
         else{  //근접하지 않았을때
 
-            effectcup_Img.setVisibility(View.INVISIBLE); //소주잔 이펙트 보이게
-            effetpapersojucup_Ani.stop();
+            effectcup_Img.setVisibility(View.INVISIBLE); // 이펙트이미지를 보이지 않도록 숨김.
+            effetpapersojucup_Ani.stop(); //이펙트애니메이션 중지.
 
-
-      /*      Animation ts = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.translate);  //트랜스레이트 애니메이션. 소주잔이 사이드로 나오는 애니메이션효과
-            paperjan_Img.startAnimation(ts);*/
             Drawable imgttt = effectcup_Img.getBackground();
-            imgttt.setAlpha(0);
+            imgttt.setAlpha(0); //투명화 시킴.
 
-            effectcup_Img.setVisibility(View.INVISIBLE);
-
-            Animation t = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bouncescale);  //바운스 트윈애니메이션. 소주잔이 튀기는 애니메이션효과
+            Animation t = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bouncescale);  //바운스 트윈애니메이션.
             flowcup_Img.startAnimation(t);
-
 
             flowcup_Img.setVisibility(View.VISIBLE);
             flowcup_Ani.start();
 
-
-            m_soundPool.play(sojuFlow_Sound,  //준비한 soundID 맥주따르는 효과음
-                    1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
-                    1, //오른쪽 볼륨 float
-                    1, //우선순위 int
-                    0, //반복회수 int -1:무한반복, 0:반복안함
-                    1); //재생속도 float 0.5(절반속도)~2.0(2배속)
-
+            if(so == 10) {
+                m_soundPool.play(sojuFlow_Sound,
+                        1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
+                        1, //오른쪽 볼륨 float
+                        1, //우선순위 int
+                        0, //반복회수 int -1:무한반복, 0:반복안함
+                        1); //재생속도 float 0.5(절반속도)~2.0(2배속)
+            }
+            if(so == 11){
+                m_soundPool.play(beerFlow_Sound,
+                        1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
+                        1, //오른쪽 볼륨 float
+                        1, //우선순위 int
+                        0, //반복회수 int -1:무한반복, 0:반복안함
+                        1); //재생속도 float 0.5(절반속도)~2.0(2배속)
+            }
+            if(so == 12){
+                m_soundPool.play(canFlow_Sound,
+                        1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
+                        1, //오른쪽 볼륨 float
+                        1, //우선순위 int
+                        0, //반복회수 int -1:무한반복, 0:반복안함
+                        1); //재생속도 float 0.5(절반속도)~2.0(2배속)
+            }
 
 
 
@@ -525,9 +582,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 result = data.getStringExtra("선택한 이미지");
 //                Toast.makeText(MainActivity.this, result, Toast.LENGTH_LONG).show();
 
-
-
-
                 switch (result){
                     case "0":
                         linearLayout.setBackgroundResource(R.drawable.examplebackground);  // 테마선택 나무
@@ -541,10 +595,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
 
-
-
                     //10번 부터는 컵/병/이펙트 선택
                     case "10": //종이컵
+                        so = 10;
                         effectcup_Img.setBackgroundResource(R.drawable.ani_effectpapersojucup);
                         effetpapersojucup_Ani = (AnimationDrawable) effectcup_Img.getBackground();
                         effetpapersojucup_Ani.setOneShot(true);
@@ -554,7 +607,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                         flowcup_Ani.setOneShot(true);
 
 
-                        //소주bottle 설정
+                        //soju bottle 설정
                         bootle_Img.setBackgroundResource(R.drawable.sojubottle);
                         ConstraintLayout.LayoutParams layoutParams10 = (ConstraintLayout.LayoutParams)bootle_Img.getLayoutParams(); //RelativeLayout 커지는 맥주의 img 의 크기를 객체화
                         layoutParams10.width = 90; //가로 1000dp로 만들고 설정.
@@ -566,11 +619,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
 
-
-
-
-
                     case "11": //맥주컵
+                        so = 11;
                         effectcup_Img.setBackgroundResource(R.drawable.ani_effectbeernewcup);   //ani_straightjan
                         effetpapersojucup_Ani = (AnimationDrawable) effectcup_Img.getBackground();
                         effetpapersojucup_Ani.setOneShot(true);
@@ -602,22 +652,35 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                         bootle_Img.setLayoutParams(layoutParams11);
                         break;
 
+
+                    //캔컵
+                    case "12": //캔컵
+                        so = 12;
+                        effectcup_Img.setBackgroundResource(R.drawable.ani_effectcancup);
+                        effetpapersojucup_Ani = (AnimationDrawable) effectcup_Img.getBackground();
+                        effetpapersojucup_Ani.setOneShot(true);
+
+                        flowcup_Img.setBackgroundResource(R.drawable.ani_cannewcup);       //ani_beernewcup 사이즈문제 확인했습니다.
+                        flowcup_Ani = (AnimationDrawable) flowcup_Img.getBackground();
+                        flowcup_Ani.setOneShot(false);
+
+
+
+                        //캔bottle 설정
+                        bootle_Img.setBackgroundResource(R.drawable.beerbottle);
+                        //bootle_Img.setBackgroundResource(R.drawable.canbottle);
+                        ConstraintLayout.LayoutParams layoutParams12 = (ConstraintLayout.LayoutParams)bootle_Img.getLayoutParams(); //RelativeLayout 커지는 맥주의 img 의 크기를 객체화
+                        layoutParams12.width = 110; //가로 1000dp로 만들고 설정.
+                        bootle_Img.setLayoutParams(layoutParams12);
+                        layoutParams12.height = 400; //세로 1800dp로 만들고 설정.
+                        bootle_Img.setLayoutParams(layoutParams12);
+                    break;
                 }
             }else if (resultCode == Activity.RESULT_CANCELED){
                 //반환값이 없을 경우의 코드
             }
         }
     }
-
-
-
-
-
-   /* boolean registerListener(SensorEventListener listener){  //센서리스너 등록 함수()
-        m_sensorManager.registerListener(this, m_sensor, SensorManager.SENSOR_DELAY_NORMAL);
-        return false;
-    }*/
-
 
 
     @Override
@@ -628,5 +691,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                                                               //- SENSOR_STATUS_UNRELIABLE               신뢰할 수 없음
 
 //=================================================================================================================================================
+
+
 
 }

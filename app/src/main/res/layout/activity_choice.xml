@@ -19,9 +19,7 @@ tools:context="com.example.administrator.homesuls.ChoiceActivity">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/toolbar_textview"
-        android:text="ChoiceActivity"
-        android:textColor="@android:color/white" />
+        android:id="@+id/toolbar_textview" />
 </android.support.v7.widget.Toolbar>
 
 
@@ -37,10 +35,9 @@ tools:context="com.example.administrator.homesuls.ChoiceActivity">
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="0.5"
-        android:background="@drawable/choicebutton1"
+        android:background="@drawable/choicebutton_selector1"
         android:orientation="horizontal">
     </LinearLayout>
-
 
 
 
@@ -50,7 +47,7 @@ tools:context="com.example.administrator.homesuls.ChoiceActivity">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0.5"
-        android:background="@drawable/choicebutton2"
+        android:background="@drawable/choicebutton_selector2"
         android:orientation="vertical">
     </LinearLayout>
 </LinearLayout>

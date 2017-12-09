@@ -1,0 +1,12 @@
+<resources>
+    <string name="exit">Homesul</string>
+    <string name="exit_message">Do you want to quit?</string>
+    <string name="yes">Ok</string>
+    <string name="no">Cancel</string>
+
+    <string name="banner_ad_unit_id_choice">ca-app-pub-6571541518480270/2002486316</string>
+
+    <string name="banner_ad_unit_id_front">ca-app-pub-6571541518480270/2680378828</string>
+
+    <string name="banner_ad_unit_id_key">ca-app-pub-6571541518480270/2892255523</string>
+</resources>

@@ -134,6 +134,7 @@ public class ChoiceActivity extends AppCompatActivity {
     }
 
 
+
     public  void sound(){
         c_soundPool.play(click_Sound,  //준비한 soundID 맥주따르는 효과음
                 1, //왼쪽 볼륨 float 0.0(작은소리) ~ 1.0 (큰소리)
@@ -141,5 +142,11 @@ public class ChoiceActivity extends AppCompatActivity {
                 1, //우선순위 int
                 0, //반복회수 int -1:무한반복, 0:반복안함
                 1); //재생속도 float 0.5(절반속도)~2.0(2배속)
+    }
+
+    @Override
+    public void onBackPressed() {
+        sound();
+        super.onBackPressed();
     }
 }

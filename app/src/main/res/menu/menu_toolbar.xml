@@ -7,7 +7,7 @@
         android:id="@+id/menuOption_Item"
         android:icon="@mipmap/ic_menubuttonimg"
         app:showAsAction="ifRoom"
-        android:title="Compose"/>
+        android:title=""/>
 
 
 

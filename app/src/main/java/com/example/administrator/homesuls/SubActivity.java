@@ -1,8 +1,10 @@
 package com.example.administrator.homesuls;
 
 import android.content.Intent;
+import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.SoundPool;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -26,8 +28,33 @@ public class SubActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub);
 
-        c_soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0); // 최대 음악파일의 개수, 스트림타입, 음질 기본값0
-        click_Sound = c_soundPool.load(this, R.raw.clicksound, 1);    //버튼클릭 소리
+
+
+
+
+
+
+
+
+        c_soundPool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0); // 최대 음악파일의 개수, 스트림타입, 음질 기본값0
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        {
+            AudioAttributes audio = new AudioAttributes.Builder()
+                    . setContentType ( AudioAttributes . CONTENT_TYPE_MUSIC )
+                    . setFlags(AudioAttributes.FLAG_AUDIBILITY_ENFORCED)
+                    . setUsage(AudioAttributes.USAGE_GAME)
+                    .build();
+
+            new SoundPool.Builder().setAudioAttributes(audio).setMaxStreams(5).build();
+            click_Sound = c_soundPool.load(this, R.raw.clicksound, 1);
+            c_soundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
+                @Override
+                public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
+                    //롤리팝버전부터
+                }
+            });
+        }
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -41,7 +68,7 @@ public class SubActivity extends AppCompatActivity {
 
 //        String[] items = {"item1", "item2", "item3", "item4", "item5", "item6", "item7", "item8", "item9", "item10", "item11", "item12", "item13", "item14", "item15", "item16"};
 
-//        ListAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
+//  ==============================================리스트뷰==========================================================
         ArrayAdapter<CharSequence> Adapter;
         Adapter = ArrayAdapter.createFromResource(this, R.array.list, android.R.layout.simple_list_item_1);
         ListView listView = (ListView)findViewById(R.id.listView);
@@ -75,4 +102,12 @@ public class SubActivity extends AppCompatActivity {
             startActivity(intent);
         }
     };
+
+
+
+    @Override
+    public void onBackPressed() {
+        c_soundPool.play(click_Sound,1,1,1,0,1);
+        super.onBackPressed();
+    }
 }
