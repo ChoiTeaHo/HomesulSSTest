@@ -19,7 +19,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 /**
- * Created by Administrator on 2017-07-30.
+ * Created by Administrator on
  */
 
 public class DialogActivity extends AppCompatActivity {
@@ -32,6 +32,9 @@ public class DialogActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dialog);
+
+
+
 
 
         c_soundPool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0); // 최대 음악파일의 개수, 스트림타입, 음질 기본값0
@@ -216,10 +219,10 @@ public class DialogActivity extends AppCompatActivity {
         new AlertDialog.Builder(this).setView(set_TextView)
                 .setIcon(android.R.drawable.ic_dialog_info)
                 .setTitle(DialogActivity.this.getString(R.string.exit)) //혼술집
-                .setMessage('\n' + "버전 0.0.1" + '\n' + "Cheerluv Team 개발" + '\n' + '\n' + '\n'+ '\n'+ '\n' +
+                .setMessage('\n' + "버전 1.0.2" + '\n' + "Cheerluv Team 개발" + '\n' + '\n' + '\n'+ '\n'+ '\n' +
                         "변경사항" + '\n' +  '\n' +
-                        "#0.0.1" + '\n'+
-                        "Can Cup 을 추가하였습니다." + '\n' + '\n' + '\n' + '\n' )
+                        "#1.0.2" + '\n'+
+                        "혼술집 게시판 서버 활성화." + '\n' + '\n' + '\n' + '\n' )
                 .setPositiveButton(DialogActivity.this.getString(R.string.lookyes),
                         new DialogInterface.OnClickListener()
                         {
@@ -244,7 +247,7 @@ public class DialogActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         c_soundPool.play(click_Sound,1,1,1,0,1);
-        super.onBackPressed();
+        super.onBackPressed();  //super는 부모의 기본생성자를 호출한다.
     }
 }
 

@@ -683,6 +683,17 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {  // (Sensor sensor, int i)에서 int i는 현 기기 정확도를 의미 정확도는 3개로 나뉜다.
     }                                                         //SENSOR_STATUS_ACCURACY_HIGH        정확도 높음

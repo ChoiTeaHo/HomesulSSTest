@@ -75,7 +75,7 @@ public class ChatActivity extends AppCompatActivity {
 //=========================================================================================================================================
         //list = (ListView) findViewById(listView);
         personList = new ArrayList<HashMap<String, String>>();
-        getData("http://61.99.32.244:8080/HOMESUL_connection.php"); /** 태호 PC 서버 */
+        getData("http://layup3.cafe24.com/HOMESUL_connection.php"); /** 태호 PC 서버 */
 
 
 

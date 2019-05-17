@@ -70,10 +70,10 @@ public class CupActivity extends AppCompatActivity implements RewardedVideoAdLis
 
 
         /**리워드 테스트전용 코드*/
-        adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).addTestDevice("94FB26755CB6CA698ADD5C041D7E4596").build();
+        //adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).addTestDevice("94FB26755CB6CA698ADD5C041D7E4596").build();
 
         /** 리워드 실제테스트 코드*/
-        //adRequest = new AdRequest.Builder().build();
+        adRequest = new AdRequest.Builder().build();
 
 
         /**배너 테스트전용 코드*/
@@ -254,7 +254,14 @@ public class CupActivity extends AppCompatActivity implements RewardedVideoAdLis
                     break;
 
                 case R.id.cup6:
-                    Toast.makeText(CupActivity.this, "b의 값: " + b, Toast.LENGTH_SHORT).show();
+                    RewardDialog(); //광고 호출
+                    if(b==1) {
+                        Toast.makeText(CupActivity.this, "현재 컵은 개발중입니다.", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(CupActivity.this, "b의 값: " + b, Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+                    else
+
                     break;
 
 
@@ -269,7 +276,7 @@ public class CupActivity extends AppCompatActivity implements RewardedVideoAdLis
     public void onRewardedVideoAdOpened(){} // 광고가 노출되었을 때 호출
     public void onRewardedVideoStarted(){} // 비디오 광고가 시작될 때 호출
     public void onRewardedVideoAdClosed(){} // 광고가 닫혔을 때 호출 (x 버튼)
-    public void onRewarded(RewardItem rewardItem){} // 비디오 광고가 종료되었을 때 보상 반환
+    public void onRewarded(RewardItem rewardItem){b=1;} // 비디오 광고가 종료되었을 때 보상 반환
     public void onRewardedVideoAdLeftApplication(){} // 광고가 노출되는 어플리케이션을 나갔을 때 호출
     public void onRewardedVideoAdFailedToLoad(int i){b=1;} // 광고 로드에 실패했을 때 호출
 
@@ -287,8 +294,8 @@ public class CupActivity extends AppCompatActivity implements RewardedVideoAdLis
                             @Override
                             public void onClick( DialogInterface dialog, int which )
                             {
-                                videoAd.loadAd("",adRequest);
-                                //videoAd.loadAd("ca-app-pub-6571541518480270/7724994350", adRequest);  //리워드 실제마켓 코드   //광고ID
+                                //videoAd.loadAd("",adRequest); //테스트코드
+                                videoAd.loadAd("ca-app-pub-6571541518480270/7724994350", adRequest);  //리워드 실제마켓 코드   //광고ID
                             }
                         }
                 ).setNegativeButton(this.getString(R.string.no), null ).show();

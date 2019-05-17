@@ -154,13 +154,13 @@ public class ThemeActivity extends AppCompatActivity {
                 previousBtn.setImageResource(chevron_left1);
                 switch (child){
                     case 0: sound();
-                        themeText.setText("세번째 테마");
+                        themeText.setText("한강");
                         break;
                     case 1: sound();
-                        themeText.setText("첫번째 테마");
+                        themeText.setText("개발중");
                         break;
                     case 2: sound();
-                        themeText.setText("두번째 테마");
+                        themeText.setText("자취방");
                         break;
                 }
                 mHandler.postDelayed(new Runnable() {
@@ -178,13 +178,13 @@ public class ThemeActivity extends AppCompatActivity {
                 nextBtn.setImageResource(chevron_right1);
                 switch (child){
                     case 0: sound();
-                        themeText.setText("두번째 테마");
+                        themeText.setText("자취방");
                         break;
                     case 1: sound();
-                        themeText.setText("세번째 테마");
+                        themeText.setText("한강");
                         break;
                     case 2: sound();
-                        themeText.setText("첫번째 테마");
+                        themeText.setText("개발중");
                         break;
                 }
                 mHandler.postDelayed(new Runnable() {

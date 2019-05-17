@@ -165,7 +165,7 @@ public class InputActivity extends AppCompatActivity {
 
             //String age = (String)params[2];  /**추가*/
 
-            String serverURL = "http://61.99.32.244:8080/HOMESUL_insert.php";  // 문자열 형태의 serverURL 내용을 태호 PC 로 했다.
+            String serverURL = "http://layup3.cafe24.com/HOMESUL_insert.php";  // 문자열 형태의 serverURL 내용을 태호 PC 로 했다.
             String postParameters = "name=" + name + "&address=" + address;       /**추가*/ // 요청할 파라미터의 정보를 입력했다.
             // 문자열 형태의 postParameters 에 ex) name=Teaho , address=Korea 로 했다.
 
