@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">灵性吧</string>
+
+    <string name="exit">灵性吧</string>
+    <string name="exit_message">你想完成吗？</string>
+    <string name="yes">四</string>
+    <string name="no">取消</string>
+
+    <string name="lookyes">四</string>
+
+
+    <string name="banner_ad_unit_id_choice">ca-app-pub-6571541518480270/2002486316</string>
+
+    <string name="banner_ad_unit_id_front">ca-app-pub-6571541518480270/2680378828</string>
+
+    <string name="banner_ad_unit_id_key">ca-app-pub-6571541518480270/2892255523</string>
+</resources>

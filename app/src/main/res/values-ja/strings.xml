@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">一人でお酒</string>
+
+
+    <string name="exit">一人でお酒</string>
+    <string name="exit_message">終了しますか？</string>
+    <string name="yes">はい</string>
+    <string name="no">キャンセル</string>
+
+    <string name="lookyes">はい</string>
+    <string name="banner_ad_unit_id_choice">ca-app-pub-6571541518480270/2002486316</string>
+
+    <string name="banner_ad_unit_id_front">ca-app-pub-6571541518480270/2680378828</string>
+
+    <string name="banner_ad_unit_id_key">ca-app-pub-6571541518480270/2892255523</string>
+</resources>
