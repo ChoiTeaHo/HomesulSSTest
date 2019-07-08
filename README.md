@@ -1,7 +1,7 @@
 # HomesulSSTest
 Cheerluv Team - '혼술집' Project
 
-개발절차
+## 개발절차
 * '잔디' 협업툴 사용
 * 팀명세서: https://drive.google.com/open?id=1MbZrc6EK6toNGroFogNIOXCvSpWHfWzx  
 * 기획명세서: https://drive.google.com/open?id=1dD6bSSzqrXgiQPbnIT-1Q0Pf8HPUdaQ-  
@@ -20,5 +20,5 @@ Cheerluv Team - '혼술집' Project
 
 
 
-이슈  
+## 이슈  
 <img width="600" height="500" class="spinner" alt="" src="https://user-images.githubusercontent.com/19817832/60798233-b59dad80-a1ab-11e9-8559-23bf1f60deb8.gif"/>
