@@ -1,5 +1,5 @@
-# HomesulSSTest
-Cheerluv Team - '혼술집' Project
+# Hello, welcome to Homesul
+
 
 ## 개발절차
 * '잔디' 협업툴 사용
