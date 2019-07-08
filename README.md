@@ -20,5 +20,5 @@ Cheerluv Team - '혼술집' Project
 
 
 
-이슈
-<img width="400" height="500" class="spinner" alt="" src="https://user-images.githubusercontent.com/19817832/60798233-b59dad80-a1ab-11e9-8559-23bf1f60deb8.gif"/>
+이슈  
+<img width="700" height="500" class="spinner" alt="" src="https://user-images.githubusercontent.com/19817832/60798233-b59dad80-a1ab-11e9-8559-23bf1f60deb8.gif"/>
