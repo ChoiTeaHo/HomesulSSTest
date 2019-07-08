@@ -2,7 +2,7 @@
 If you hit the proximity sensor cup, you may feel like drinking alcohol together.
 You can use messages with correct drinking and bulletin boards.
 
-## 개발절차
+## Process
 * '잔디' 협업툴 사용
 * 팀명세서: https://drive.google.com/open?id=1MbZrc6EK6toNGroFogNIOXCvSpWHfWzx  
 * 기획명세서: https://drive.google.com/open?id=1dD6bSSzqrXgiQPbnIT-1Q0Pf8HPUdaQ-  
