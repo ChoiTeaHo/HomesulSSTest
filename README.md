@@ -1,5 +1,6 @@
 # Hello, welcome to Homesul
-
+If you hit the proximity sensor cup, you may feel like drinking alcohol together.
+You can use messages with correct drinking and bulletin boards.
 
 ## 개발절차
 * '잔디' 협업툴 사용
