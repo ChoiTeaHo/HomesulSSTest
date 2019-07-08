@@ -2,7 +2,13 @@
 Cheerluv Team - '혼술집' Project
 
 개발절차
-
+* '잔디' 협업툴 사용
+* 팀명세서: https://drive.google.com/open?id=1MbZrc6EK6toNGroFogNIOXCvSpWHfWzx  
+* 기획명세서: https://drive.google.com/open?id=1dD6bSSzqrXgiQPbnIT-1Q0Pf8HPUdaQ-  
+* 설계명세서: https://drive.google.com/open?id=19iw3jhk072sPvHwu24jYw3MD8hwQVTrw  
+* 액티비티스토리보드: https://drive.google.com/open?id=1E3O4OeFsjTiopqV2ogeipmvk2_KM49i0  
+  
+  
 1주차: https://drive.google.com/open?id=19FcyaYanK4AgCxqYDDAq7L4jh8rwXgRc  
 2주차: https://drive.google.com/open?id=1FlVupr4HBMCh4adYdRibCixR2bIRC7_A  
 3주차: https://drive.google.com/open?id=118fMa-zQtJOA12u62xi1pRtQk4GqUExm  
