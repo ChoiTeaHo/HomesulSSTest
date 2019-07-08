@@ -19,6 +19,7 @@ You can use messages with correct drinking and bulletin boards.
 7주차 정리: https://drive.google.com/open?id=15dEnovOsVDDwvqBILFwZ3OJoXSB-tT7R  
 8주차 정리: https://drive.google.com/open?id=1C7ELoR0GTjUZyQAx4cxhH-NnoL989SiS  
 
+<img width="800" height="400" alt="" src="https://user-images.githubusercontent.com/19817832/60803728-d0c1ea80-a1b6-11e9-992b-61f5c3a4dfdd.png"/>
 
 
 ## Demo  
